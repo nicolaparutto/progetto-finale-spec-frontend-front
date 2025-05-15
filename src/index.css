@@ -61,6 +61,7 @@ header {
     ul {
       li {
         margin-right: 40px;
+        cursor: pointer;
       }
     }
   }
@@ -77,20 +78,19 @@ header {
 
       form {
         display: flex;
-        justify-content: space-between;
-        width: 300px;
-        align-items: center;
         border: 1px solid var(--main-blue);
         border-radius: 100px;
-        padding: 3px 24px;
+        padding: 3px;
 
         input {
+          width: 300px;
           border: none;
+          border-radius: 100px;
           color: var(--main-blue);
           font-size: 14px;
           font-weight: 800;
           outline: none;
-
+          padding-left: 15px;
 
           &::placeholder {
             color: var(--main-blue);
@@ -126,7 +126,7 @@ header {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      width: 300px;
+      width: 346px;
 
       div {
         margin-left: 40px;
@@ -142,6 +142,10 @@ header {
         border: 4px solid #EDEEEF;
         border-radius: 100%;
         padding: 8px 11px;
+
+        &:hover {
+          border-color: #d9d9d9;
+        }
       }
 
       .user-wishlist,
@@ -210,3 +214,181 @@ header {
 }
 
 /* ========== MAIN style ========== */
+
+
+/* ========== FOOTER style ========== */
+footer {
+  .footer-bg {
+    background-color: #0369B6;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0;
+    border-bottom: 1px solid #5A99CD;
+
+    div {
+      h4 {
+        color: var(--main-yellow);
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+
+        li {
+          margin-bottom: 3px;
+
+          a {
+            color: #E9F1F8;
+            font-size: .8rem;
+            font-weight: 400;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-logo {
+      img {
+        display: block;
+      }
+
+      div:first-child {
+        width: 230px;
+        margin-left: 10px;
+        margin-bottom: 25px;
+      }
+
+      div:last-child {
+        width: 90px;
+      }
+    }
+
+    .footer-agency {
+      li:last-child {
+        margin-top: 15px;
+      }
+    }
+
+    .footer-privacy {
+      li:nth-child(4) {
+        margin: 23px 0;
+      }
+    }
+  }
+
+  .footer-socials {
+    display: flex;
+    margin-top: 22px;
+    padding-bottom: 30px;
+
+    div {
+      h5 {
+        color: #E9F1F8;
+        margin-bottom: 15px;
+        font-weight: 400;
+        font-size: 0.9rem;
+      }
+    }
+
+    .f-shop-search {
+      width: 40%;
+
+      form {
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 100px;
+        padding: 3px;
+
+        input {
+          width: 200px;
+          margin-right: 3px;
+          padding: 8px 15px;
+          border: none;
+          border-radius: 100px;
+          outline: none;
+        }
+
+        button {
+          border: none;
+          padding: 9px 15px;
+          border-radius: 100px;
+          transition: background-color 0.4s ease;
+
+          &:hover {
+            background-color: var(--main-yellow);
+          }
+        }
+      }
+    }
+
+    .f-socials {
+      width: 30%;
+
+      ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+
+        li:first-child {
+          padding: 10px 14px;
+        }
+
+        li {
+          cursor: pointer;
+          color: #fff;
+          margin-right: 26px;
+          padding: 10px 12px;
+          border-radius: 100%;
+          background-color: var(--main-blue);
+        }
+      }
+    }
+
+    .f-app {
+      width: 30%;
+      padding-left: 50px;
+
+      img {
+        cursor: pointer;
+        width: 130px;
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+
+    div:first-child {
+      width: 50%;
+      font-size: .8rem;
+      margin-right: 10px;
+    }
+
+    div:last-child {
+      width: 50%;
+      margin-left: 10px;
+
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+
+        li {
+          width: 60px;
+        }
+      }
+    }
+  }
+}
