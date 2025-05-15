@@ -46,11 +46,22 @@ a {
 }
 
 /* ========== HEADER style ========== */
+.lock-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+}
+
 header {
   ul {
     list-style: none;
     display: flex;
   }
+
+
 
   .top-menu-header {
     line-height: 40px;
@@ -214,7 +225,9 @@ header {
 }
 
 /* ========== MAIN style ========== */
-
+main {
+  margin-top: 182px;
+}
 
 /* ========== FOOTER style ========== */
 footer {

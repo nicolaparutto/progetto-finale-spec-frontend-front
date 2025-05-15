@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 function DefaultLayout() {
 	return (
 		<>
-			<header className="container">
+			<header className="lock-top">
 				<Header />
 			</header >
 			<main>
