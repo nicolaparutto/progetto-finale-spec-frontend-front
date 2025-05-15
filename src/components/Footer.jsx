@@ -56,12 +56,12 @@ function Footer() {
 						<div className="f-socials">
 							<h5>Seguici sui social</h5>
 							<ul>
-								<li><i class="fa-brands fa-facebook-f"></i></li>
-								<li><i class="fa-brands fa-instagram"></i></li>
-								<li><i class="fa-brands fa-linkedin-in"></i></li>
-								<li><i class="fa-brands fa-whatsapp"></i></li>
-								<li><i class="fa-brands fa-tiktok"></i></li>
-								<li><i class="fa-brands fa-youtube"></i></li>
+								<li><i className="fa-brands fa-facebook-f"></i></li>
+								<li><i className="fa-brands fa-instagram"></i></li>
+								<li><i className="fa-brands fa-linkedin-in"></i></li>
+								<li><i className="fa-brands fa-whatsapp"></i></li>
+								<li><i className="fa-brands fa-tiktok"></i></li>
+								<li><i className="fa-brands fa-youtube"></i></li>
 							</ul>
 						</div>
 						<div className="f-app">

@@ -61,8 +61,6 @@ header {
     display: flex;
   }
 
-
-
   .top-menu-header {
     line-height: 40px;
     font-size: 14px;
@@ -85,9 +83,8 @@ header {
     margin-top: 15px;
 
     .search-bar {
-
-
       form {
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
         display: flex;
         border: 1px solid var(--main-blue);
         border-radius: 100px;
@@ -227,6 +224,40 @@ header {
 /* ========== MAIN style ========== */
 main {
   margin-top: 182px;
+
+  .home-section {
+    margin: 35px auto;
+  }
+
+  .homepage-banner {
+    img {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  section {
+    h1 {
+      text-align: center;
+      color: var(--main-blue);
+      font-size: 1.6rem;
+    }
+
+    .category-products {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+
+      div {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.06);
+        }
+      }
+    }
+  }
 }
 
 /* ========== FOOTER style ========== */

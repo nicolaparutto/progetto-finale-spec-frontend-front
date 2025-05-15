@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePAge";
 import ProductDetailPage from "./pages/ProductDetailPage";
-
+import CategoryProducts from "./pages/CategoryProducts";
 // ____________________________________________________
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route Component={DefaultLayout}>
           <Route path="/" Component={HomePage} />
           <Route path="/product-details" Component={ProductDetailPage} />
+          <Route path="/category/:categoryName" Component={CategoryProducts} />
         </Route>
       </Routes>
     </BrowserRouter>
