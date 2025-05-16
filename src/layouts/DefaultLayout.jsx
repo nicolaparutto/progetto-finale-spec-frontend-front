@@ -1,12 +1,16 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 // components:
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/partials/Header";
+import Footer from "../components/partials/Footer";
+
 // ____________________________________________________
 function DefaultLayout() {
+	const location = useLocation()
+	const applyShadow = location.pathname.startsWith("/category/");
+
 	return (
 		<>
-			<header className="lock-top">
+			<header className={`lock-top ${applyShadow ? "header-shadow" : ""}`}>
 				<Header />
 			</header >
 			<main>

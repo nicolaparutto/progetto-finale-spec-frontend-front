@@ -1,5 +1,7 @@
+// react utility:
+import { Link } from "react-router-dom";
 // menu data import:
-import { topMenuData, mainMenuData } from "../assets/utility-data"
+import { topMenuData, mainMenuData } from "../../assets/utility-data";
 
 // ____________________________________________________
 function Header() {
@@ -21,7 +23,7 @@ function Header() {
 						</form>
 					</div>
 					<div className="logo">
-						<img src="utility-img/logo.png" alt="logo" />
+						<Link to={"/"}><img src="utility-img/logo.png" alt="logo" /></Link>
 					</div>
 					<div className="user-section">
 						<div className="user-info">

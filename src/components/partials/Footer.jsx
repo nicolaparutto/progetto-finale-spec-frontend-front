@@ -1,5 +1,5 @@
 // footer data import:
-import { footerAgency, footerAcquisitions, footerClients, footerPrivacy } from "../assets/utility-data"
+import { footerAgency, footerAcquisitions, footerClients, footerPrivacy } from "../../assets/utility-data"
 
 // ____________________________________________________
 function Footer() {
