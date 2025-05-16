@@ -5,12 +5,20 @@ import { topMenuData, mainMenuData } from "../../assets/utility-data";
 // logo per percorso assoluto:
 import logo from "../../../public/utility-img/logo.png";
 import { useProductsContext } from "../../context/ProductsContext";
+import { useMemo, useState } from "react";
 
 // ____________________________________________________
 function Header() {
+	const { productsOnCart, productsOnWishlist } = useProductsContext();
 
-	const { productsOnCart } = useProductsContext();
-	console.log(productsOnCart);
+	// products quantity handle:
+	const [productsQuantity, setProductsQuantity] = useState(0)
+	useMemo(() => {
+		const quantity = productsOnCart.reduce((quantity, p) => {
+			return quantity += p.quantity
+		}, 0)
+		setProductsQuantity(quantity);
+	}, [productsOnCart])
 
 	return (
 		<>
@@ -38,11 +46,11 @@ function Header() {
 						</div>
 						<div className="user-wishlist">
 							<i className="fa-solid fa-heart"></i>
-							<div className="saved-quantity">{productsOnCart.length}</div>
+							<div className="saved-quantity">{productsOnWishlist.length}</div>
 						</div>
 						<div className="user-cart">
 							<i className="fa-solid fa-cart-shopping"></i>
-							<div className="saved-quantity">0</div>
+							<div className="saved-quantity">{productsQuantity}</div>
 						</div>
 					</div>
 				</div>

@@ -8,7 +8,7 @@ import ProductCard from "../components/ProductCard";
 function CategoryProducts() {
 	const { categoryName } = useParams();
 	// context:
-	const { fetchProductsCategory, categoryProducts, addToCart } = useProductsContext();
+	const { fetchProductsCategory, categoryProducts } = useProductsContext();
 	// products list and ordered:
 	const [productsOrder, setProductsOrder] = useState(categoryProducts);
 	// products brands:
@@ -114,8 +114,8 @@ function CategoryProducts() {
 
 					<div className="p-list">
 						{productsOrder.length > 0 ?
-							productsOrder.map((p, i) => (
-								<ProductCard key={i} productData={p} addToCart={addToCart} />
+							productsOrder.map((p) => (
+								<ProductCard key={p.id} productData={p} />
 							))
 							:
 							<div className="not-found-box">

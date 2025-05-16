@@ -33,7 +33,7 @@ function App() {
           <Routes>
             <Route Component={DefaultLayout}>
               <Route path="/" Component={HomePage} />
-              <Route path="/product-details" Component={ProductDetailPage} />
+              <Route path="/product-details/:id" Component={ProductDetailPage} />
               <Route path="/category/:categoryName" Component={CategoryProductsPage} />
             </Route>
           </Routes>

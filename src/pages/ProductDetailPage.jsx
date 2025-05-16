@@ -1,8 +1,10 @@
-
+import { useParams } from "react-router-dom"
 // ____________________________________________________
 function ProductDetailPage() {
+	const { id } = useParams()
+
 	return (
-		<div>ProductDetailPage</div>
+		<div>Pagina di dettagli prodotto con id: {id}</div>
 	)
 }
 
