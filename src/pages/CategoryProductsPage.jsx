@@ -1,30 +1,60 @@
 // react utility:
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useProductsContext } from "../context/ProductsContext";
-
+//components:
 import ProductCard from "../components/ProductCard";
 
-// ____________________________________________________
 function CategoryProducts() {
 	const { categoryName } = useParams();
-
-	const { fetchProductsCategory, categoryProducts } = useProductsContext();
-
+	// context:
+	const { fetchProductsCategory, categoryProducts, addToCart } = useProductsContext();
+	// products list and ordered:
+	const [productsOrder, setProductsOrder] = useState(categoryProducts);
+	// products brands:
 	const productsBrand = categoryProducts.reduce((brands, p) => {
 		if (!brands.includes(p.brand)) {
 			brands.push(p.brand)
 		}
 		return brands
 	}, [])
-
-	const openDetail = () => {
-		console.log("ciao")
+	// filter system:
+	const [selectedPrice, setSelectedPrice] = useState(null);
+	const [selectedBrand, setSelectedBrand] = useState("");
+	const handleFilterByPrice = (e) => {
+		setSelectedPrice(e.target.value)
 	}
-
+	const handleFilterByBrand = (e) => {
+		setSelectedBrand(e.target.value)
+	}
+	// filter function:
+	const filterProducts = () => {
+		let filtered = [...categoryProducts]
+		if (selectedPrice === "opt1") {
+			filtered = filtered.filter(p => p.price <= 300);
+		} else if (selectedPrice === "opt2") {
+			filtered = filtered.filter(p => p.price > 300 && p.price <= 500);
+		} else if (selectedPrice === "opt3") {
+			filtered = filtered.filter(p => p.price > 500);
+		}
+		if (selectedBrand) {
+			filtered = filtered.filter(p => p.brand === selectedBrand);
+		}
+		setProductsOrder(filtered)
+	}
+	// useEffect al cambiamento dei filtri:
+	useEffect(() => {
+		filterProducts();
+	}, [selectedPrice, selectedBrand]);
+	// useEffect per settare la lista prodotti al cambiamento di categoryProducts:
+	useEffect(() => {
+		setProductsOrder(categoryProducts);
+	}, [categoryProducts]);
+	// fetch dei prodotti al caricamento del componente:
 	useEffect(() => {
 		fetchProductsCategory(categoryName)
 	}, [])
+
 	return (
 		<>
 			<section className="container section-spacer">
@@ -40,52 +70,58 @@ function CategoryProducts() {
 				</div>
 				<div className="p-section">
 					<div className="p-filters">
-						<h3>Filtri</h3>
+						<div className="filters-intestation">
+							<h3>Filtri</h3>
+							<button className="remove-filter-btn" onClick={() => setProductsOrder(categoryProducts)}>Rimuovi filtri</button>
+						</div>
 						<details className="filter">
-							<summary onClick={openDetail}>
+							<summary>
 								<span>Prezzo</span>
 								<span><i className="fa-solid fa-chevron-down"></i></span>
 							</summary>
 							<form className="filter-options">
 								<label>
-									<input type="radio" name="price" value="opzione1" />
-									Fino a € 299
+									<input type="radio" name="price" value="opt1" onChange={e => handleFilterByPrice(e)} />
+									<span>fino a € 300</span>
 								</label>
-
 								<label>
-									<input type="radio" name="price" value="opzione2" />
-									da € 300 A € 500
+									<input type="radio" name="price" value="opt2" onChange={e => handleFilterByPrice(e)} />
+									<span>da € 300 a € 500</span>
 								</label>
-
 								<label>
-									<input type="radio" name="price" value="opzione3" />
-									oltre € 500
+									<input type="radio" name="price" value="opt3" onChange={e => handleFilterByPrice(e)} />
+									<span>oltre € 500</span>
 								</label>
 							</form>
 						</details>
 						<details className="filter">
-							<summary onClick={openDetail}>
+							<summary>
 								<span>Marca</span>
 								<span><i className="fa-solid fa-chevron-down"></i></span>
 							</summary>
-
 							<form className="filter-options">
 								{productsBrand.map((b, i) => (
 									<div key={i}>
 										<label>
-											<input type="radio" name="brand" value={b} />
-											{b}
+											<input type="radio" name="brand" value={b} onChange={e => handleFilterByBrand(e)} />
+											<span>{b}</span>
 										</label>
 									</div>
 								))}
 							</form>
-
 						</details>
 					</div>
+
 					<div className="p-list">
-						{categoryProducts.map((p, i) => (
-							<ProductCard key={i} productData={p} />
-						))}
+						{productsOrder.length > 0 ?
+							productsOrder.map((p, i) => (
+								<ProductCard key={i} productData={p} addToCart={addToCart} />
+							))
+							:
+							<div className="not-found-box">
+								<img src="../utility-img/product-not-found.png" alt="" />
+							</div>
+						}
 					</div>
 				</div >
 			</section >

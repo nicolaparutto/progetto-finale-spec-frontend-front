@@ -312,13 +312,26 @@ main {
 
       .p-filters {
         width: 26%;
-        height: 410px;
         margin-top: 10px;
-        border: 1px solid #d9d9d9;
         padding: 15px;
 
-        h3 {
-          margin-bottom: 20px;
+        .filters-intestation {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 25px;
+
+          .remove-filter-btn {
+            border: none;
+            padding: 8px 12px;
+            background-color: #FF0A00;
+            color: #fff;
+            border-radius: 100px;
+
+            &:hover {
+              background-color: #9c0500;
+            }
+          }
         }
 
         .filter {
@@ -344,6 +357,11 @@ main {
 
             label {
               display: block;
+              margin-bottom: 6px;
+
+              span {
+                margin-left: 7px;
+              }
             }
           }
         }
@@ -354,6 +372,18 @@ main {
         display: flex;
         flex-wrap: wrap;
 
+        .not-found-box {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 300px;
+            margin: auto;
+          }
+        }
 
         .p-card {
           width: calc(100% / 4);

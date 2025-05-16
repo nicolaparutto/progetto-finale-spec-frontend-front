@@ -2,9 +2,16 @@
 import { Link } from "react-router-dom";
 // menu data import:
 import { topMenuData, mainMenuData } from "../../assets/utility-data";
+// logo per percorso assoluto:
+import logo from "../../../public/utility-img/logo.png";
+import { useProductsContext } from "../../context/ProductsContext";
 
 // ____________________________________________________
 function Header() {
+
+	const { productsOnCart } = useProductsContext();
+	console.log(productsOnCart);
+
 	return (
 		<>
 			<div className="container">
@@ -23,7 +30,7 @@ function Header() {
 						</form>
 					</div>
 					<div className="logo">
-						<Link to={"/"}><img src="utility-img/logo.png" alt="logo" /></Link>
+						<Link to={"/"}><img src={logo} alt="logo" /></Link>
 					</div>
 					<div className="user-section">
 						<div className="user-info">
@@ -31,12 +38,10 @@ function Header() {
 						</div>
 						<div className="user-wishlist">
 							<i className="fa-solid fa-heart"></i>
-							{/* quantità da modificare */}
-							<div className="saved-quantity">0</div>
+							<div className="saved-quantity">{productsOnCart.length}</div>
 						</div>
 						<div className="user-cart">
 							<i className="fa-solid fa-cart-shopping"></i>
-							{/* quantità da modificare */}
 							<div className="saved-quantity">0</div>
 						</div>
 					</div>

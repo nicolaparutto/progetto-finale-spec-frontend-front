@@ -1,7 +1,16 @@
-function ProductCard({ productData }) {
+function ProductCard({ productData, addToCart }) {
 
 	const { title, category, price, image } = productData;
-
+	const addCartHandle = () => {
+		const product = {
+			title,
+			category,
+			price,
+			image,
+			quantity: 1
+		}
+		addToCart(product)
+	}
 	return (
 		<div className="p-card">
 			<div className="card-content">
@@ -13,7 +22,7 @@ function ProductCard({ productData }) {
 					<h5>{title}</h5>
 					<h6>€{price}</h6>
 					<div className="product-hover">
-						<button className="product-btn add-cart-btn">AGGIUNGI AL CARRELLO</button>
+						<button className="product-btn add-cart-btn" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
 						<button className="product-btn add-wishlist-btn">AGGIUNGI ALLA WISHLIST</button>
 					</div>
 				</div>
