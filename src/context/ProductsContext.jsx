@@ -5,7 +5,7 @@ import useProducts from "../hooks/useProducts";
 const ProductsProvider = ({ children }) => {
 
 	// custom hook destructurezation for products:
-	const { fetchProductsCategory, categoryProducts } = useProducts();
+	const { fetchProductsCategory, categoryProducts, fetchProduct, product } = useProducts();
 
 	// [CART] handle:
 	const [productsOnCart, setProductsOnCart] = useState([])
@@ -38,11 +38,12 @@ const ProductsProvider = ({ children }) => {
 			setProductsOnWishlist(prev => [...prev, product])
 		}
 	}
-	console.log(productsOnCart);
-	console.log(productsOnWishlist);
+
 	const values = {
 		fetchProductsCategory,
 		categoryProducts,
+		fetchProduct,
+		product,
 		addToCart,
 		productsOnCart,
 		addToWishlist,

@@ -19,9 +19,20 @@ const useProducts = () => {
 		}
 	}
 	// =====fetch===== one product:
+	const [product, setProduct] = useState({});
+	// [GET] one product:
+	const fetchProduct = async (id) => {
+		try {
+			const response = await axios.get(`${apiUrl}/products/${id}`)
+			if (response.data.success === true) {
+				setProduct(response.data.product)
+			}
+		} catch (error) {
+			console.error(error.message)
+		}
+	}
 
-
-	return { fetchProductsCategory, categoryProducts }
+	return { fetchProductsCategory, categoryProducts, fetchProduct, product }
 }
 
 export default useProducts

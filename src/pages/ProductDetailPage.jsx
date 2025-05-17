@@ -1,10 +1,80 @@
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import { useProductsContext } from "../context/ProductsContext";
+import { useEffect } from "react";
 // ____________________________________________________
 function ProductDetailPage() {
 	const { id } = useParams()
+	const { fetchProduct, product } = useProductsContext()
+	const {
+		title,
+		description,
+		brand,
+		price,
+		image,
+		displayDimensions,
+		displayPresence,
+		releaseYear,
+		connectivity
+	} = product;
+	console.log(product);
 
+
+	// continua details page, poi fai pagina carrello e wishlist.
+
+
+
+	useEffect(() => {
+		fetchProduct(id)
+	}, [])
 	return (
-		<div>Pagina di dettagli prodotto con id: {id}</div>
+		<section className="container section-spacer">
+			<div className="product-details-section">
+				<div className="details-img">
+					<img src={`../${image}`} alt="product" />
+				</div>
+				<div className="details-info">
+					<div>
+						<h2>{title}</h2>
+						<div>
+							<i className="fa-regular fa-heart"></i>
+							<i className="fa-solid fa-share-nodes"></i>
+						</div>
+					</div>
+					<div>
+						<p><span>Dimensione schermo-pollici: </span>{displayDimensions} pollici</p>
+						<p><span>Anno di uscita: </span>{releaseYear}</p>
+						<p><span>Marca: </span>{brand}</p>
+					</div>
+				</div>
+				<div className="details-buy">
+					<div className="buy-price">
+						<h2>€ {price?.toFixed(2)}</h2>
+						<span>IVA e contributo RAEE inclusi</span>
+					</div>
+					<div className="buy-type">
+						<img src="../utility-img/payments/klarna.webp" alt="" />
+						<p>Paga in rate a partire da 50 €/mese, 15,90% TAEG. <span>Scopri di più</span></p>
+					</div>
+					<div className="buy-wishlist">
+						<button className="add-wishlist">AGGIUNGI ALLA WISHLIST</button>
+						<button className="add-cart">AGGIUNGI AL CARRELLO</button>
+					</div>
+					<div className="add-service">
+						<p><span>VUOI AGGIUNGERE UN SERVIZIO?</span></p>
+						<p><span>Scopri qui</span> tutti i servizi disponibili per il tuo acquisto</p>
+					</div>
+				</div>
+			</div>
+			<div className="section-spacer">
+				<h1>Descrizione</h1>
+				<p>{description}</p>
+			</div>
+			<div>
+				<h1>Specifiche Tecniche</h1>
+				Tutte le specifiche
+			</div>
+
+		</section>
 	)
 }
 
