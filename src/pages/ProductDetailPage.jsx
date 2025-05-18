@@ -4,7 +4,7 @@ import { useEffect } from "react";
 // ____________________________________________________
 function ProductDetailPage() {
 	const { id } = useParams()
-	const { fetchProduct, product } = useProductsContext()
+	const { fetchProduct, product, addToCart, addToWishlist } = useProductsContext()
 	const {
 		category,
 		title,
@@ -18,6 +18,17 @@ function ProductDetailPage() {
 		connectivity
 	} = product;
 
+	const addCartHandle = () => {
+		addToCart(
+			{ id, title, category, price, image }
+		)
+
+	}
+	const addWishlistHandle = () => {
+		addToWishlist(
+			{ id, title, category, price, image }
+		)
+	}
 
 	useEffect(() => {
 		fetchProduct(id)
@@ -32,7 +43,7 @@ function ProductDetailPage() {
 					<div>
 						<h2>{title}</h2>
 						<div>
-							<i className="fa-regular fa-heart"></i>
+							<i className="fa-solid fa-circle-info"></i>
 							<i className="fa-solid fa-share-nodes"></i>
 						</div>
 					</div>
@@ -52,8 +63,8 @@ function ProductDetailPage() {
 						<p>Paga in rate a partire da 50 €/mese, 15,90% TAEG. <span>Scopri di più</span></p>
 					</div>
 					<div className="buy-wishlist">
-						<button className="add-wishlist">AGGIUNGI ALLA WISHLIST</button>
-						<button className="add-cart">AGGIUNGI AL CARRELLO</button>
+						<button className="add-wishlist" onClick={addWishlistHandle}>AGGIUNGI ALLA WISHLIST</button>
+						<button className="add-cart" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
 					</div>
 					<div className="add-service">
 						<p><span>VUOI AGGIUNGERE UN SERVIZIO?</span></p>
@@ -81,7 +92,7 @@ function ProductDetailPage() {
 					<div className="specifications-connectivity">
 						<h2>Connettività</h2>
 						{connectivity?.map((c, i) => (
-							<p><span>{c}</span><i class="fa-solid fa-check"></i></p>
+							<p key={i}><span>{c}</span><i className="fa-solid fa-check"></i></p>
 						))}
 					</div>
 				</div>
