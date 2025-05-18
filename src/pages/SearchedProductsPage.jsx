@@ -10,7 +10,6 @@ function SearchedProductsPage() {
 	const location = useLocation();
 	const params = new URLSearchParams(location.search);
 	const query = params.get("query");
-	console.log(searchedProducts);
 
 	useEffect(() => {
 		fetchSearchedProducts(query);
@@ -19,6 +18,7 @@ function SearchedProductsPage() {
 		<section className=" container section-spacer">
 			<h1>Risutato ricerca: {query}</h1>
 			<div className="searched-products-list">
+				<p>TROVATI: <span>{searchedProducts.length}</span> RISULTATI</p>
 				<ProductsList productsData={searchedProducts}></ProductsList>
 			</div>
 		</section>

@@ -1,9 +1,10 @@
 import { useProductsContext } from "../context/ProductsContext";
 import { Link } from "react-router-dom";
-
+import { memo } from "react";
 function ProductCard({ productData }) {
 	const { addToCart, addToWishlist } = useProductsContext();
 	const { title, category, price, image, id } = productData;
+	console.log("ciao");
 
 	const addCartHandle = () => {
 		addToCart(
@@ -41,4 +42,4 @@ function ProductCard({ productData }) {
 	)
 }
 
-export default ProductCard
+export default memo(ProductCard)

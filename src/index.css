@@ -277,6 +277,20 @@ main {
         color: #000;
       }
 
+      .order-by-select {
+        span {
+          margin-right: 10px;
+        }
+
+        select {
+          border: none;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
       .orders {
         display: flex;
         align-items: center;
@@ -675,6 +689,17 @@ main {
 
   section {
     .searched-products-list {
+      p {
+        font-size: .9rem;
+        margin-top: 10px;
+        text-align: center;
+        font-weight: 400;
+        color: #858585;
+        span {
+          color: #000;
+        }
+      }
+
       .p-list {
         margin: 0 auto;
         margin-top: 30px;
