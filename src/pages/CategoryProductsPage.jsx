@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useProductsContext } from "../context/ProductsContext";
 //components:
-import ProductCard from "../components/ProductCard";
-
+import ProductsList from "../components/utility/ProductsList";
 function CategoryProducts() {
 	const { categoryName } = useParams();
 	// context:
@@ -111,18 +110,8 @@ function CategoryProducts() {
 							</form>
 						</details>
 					</div>
+					<ProductsList productsData={productsOrder}></ProductsList>
 
-					<div className="p-list">
-						{productsOrder.length > 0 ?
-							productsOrder.map((p) => (
-								<ProductCard key={p.id} productData={p} />
-							))
-							:
-							<div className="not-found-box">
-								<img src="../utility-img/product-not-found.png" alt="" />
-							</div>
-						}
-					</div>
 				</div >
 			</section >
 		</>

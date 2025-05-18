@@ -12,7 +12,7 @@ function HomePage() {
 				<h1>Le nostre proposte</h1>
 				<div className="category-products">
 					<div>
-						<Link to={"/category/Computer%20Portatili"}>
+						<Link to={"/category/PC%20Portatili"}>
 							<img src="../category-img/portatili-category.webp" alt="" />
 						</Link>
 					</div>

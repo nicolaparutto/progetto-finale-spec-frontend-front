@@ -1,6 +1,10 @@
 import { useLocation } from "react-router-dom";
 import { useProductsContext } from "../context/ProductsContext";
 import { useEffect } from "react";
+
+// components:
+import ProductsList from "../components/utility/ProductsList";
+
 function SearchedProductsPage() {
 	const { fetchSearchedProducts, searchedProducts } = useProductsContext()
 	const location = useLocation();
@@ -12,7 +16,12 @@ function SearchedProductsPage() {
 		fetchSearchedProducts(query);
 	}, [query])
 	return (
-		<div>Risultati ricerca: {query}</div>
+		<section className=" container section-spacer">
+			<h1>Risutato ricerca: {query}</h1>
+			<div className="searched-products-list">
+				<ProductsList productsData={searchedProducts}></ProductsList>
+			</div>
+		</section>
 	)
 }
 
