@@ -54,14 +54,18 @@ function Header() {
 						<div className="user-info">
 							<i className="fa-solid fa-user"></i>
 						</div>
-						<div className="user-wishlist">
-							<i className="fa-solid fa-heart"></i>
-							<div className="saved-quantity">{productsOnWishlist.length}</div>
-						</div>
-						<div className="user-cart">
-							<i className="fa-solid fa-cart-shopping"></i>
-							<div className="saved-quantity">{productsQuantity}</div>
-						</div>
+						<Link to={"/wishlist"}>
+							<div className="user-wishlist">
+								<i className="fa-solid fa-heart"></i>
+								<div className="saved-quantity">{productsOnWishlist.length}</div>
+							</div>
+						</Link>
+						<Link to={"/cart"}>
+							<div className="user-cart">
+								<i className="fa-solid fa-cart-shopping"></i>
+								<div className="saved-quantity">{productsQuantity}</div>
+							</div>
+						</Link>
 					</div>
 				</div>
 

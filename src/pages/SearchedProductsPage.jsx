@@ -14,6 +14,7 @@ function SearchedProductsPage() {
 	useEffect(() => {
 		fetchSearchedProducts(query);
 	}, [query])
+
 	return (
 		<section className=" container section-spacer">
 			<h1>Risutato ricerca: {query}</h1>
