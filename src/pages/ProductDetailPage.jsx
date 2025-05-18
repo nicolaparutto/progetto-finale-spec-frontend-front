@@ -6,6 +6,7 @@ function ProductDetailPage() {
 	const { id } = useParams()
 	const { fetchProduct, product } = useProductsContext()
 	const {
+		category,
 		title,
 		description,
 		brand,
@@ -16,11 +17,6 @@ function ProductDetailPage() {
 		releaseYear,
 		connectivity
 	} = product;
-	console.log(product);
-
-
-	// continua details page, poi fai pagina carrello e wishlist.
-
 
 
 	useEffect(() => {
@@ -65,13 +61,30 @@ function ProductDetailPage() {
 					</div>
 				</div>
 			</div>
-			<div className="section-spacer">
-				<h1>Descrizione</h1>
-				<p>{description}</p>
-			</div>
-			<div>
-				<h1>Specifiche Tecniche</h1>
-				Tutte le specifiche
+			<div className="product-description-section">
+				<div className="p-description">
+					<h1>Caratteristiche e Descrizione <i className="fa-solid fa-angle-down"></i></h1>
+					<p>{description}</p>
+				</div>
+				<div className="p-specifications">
+					<div className="specifications-info">
+						<h2>Informazioni Generali</h2>
+						<div>
+							<p><span>Categoria prodotto: </span>{category}</p>
+							<p><span>Marca: </span>{brand}</p>
+							<p><span>Anno di uscita: </span>{releaseYear}</p>
+							{displayPresence === "SI" && (
+								<p><span>Dimensione schermo: </span>{displayDimensions}</p>
+							)}
+						</div>
+					</div>
+					<div className="specifications-connectivity">
+						<h2>Connettività</h2>
+						{connectivity?.map((c, i) => (
+							<p><span>{c}</span><i class="fa-solid fa-check"></i></p>
+						))}
+					</div>
+				</div>
 			</div>
 
 		</section>

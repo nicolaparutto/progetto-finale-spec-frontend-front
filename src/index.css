@@ -478,6 +478,7 @@ main {
     .product-details-section {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 40px;
 
       .details-img {
         width: 33%;
@@ -604,6 +605,63 @@ main {
           p {
             span {
               font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .product-description-section {
+
+      div {
+        h1 {
+          margin-bottom: 20px;
+
+          i {
+            margin-left: 10px;
+            font-size: 20px;
+          }
+        }
+      }
+
+      .p-description {
+        margin-bottom: 30px;
+
+        p {
+          text-align: center;
+          margin: 0 auto;
+          width: 60%;
+        }
+      }
+
+      .p-specifications {
+        display: flex;
+        justify-content: space-around;
+
+        .specifications-info,
+        .specifications-connectivity {
+          width: 40%;
+
+          h2 {
+            color: var(--main-blue);
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+          }
+
+          p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 15px;
+            background-color: #F8F8F9;
+
+            span {
+              display: block;
+            }
+
+            i {
+              color: #4CAF50;
             }
           }
         }
