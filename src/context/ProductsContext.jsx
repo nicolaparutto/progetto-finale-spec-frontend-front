@@ -5,7 +5,16 @@ import useProducts from "../hooks/useProducts";
 const ProductsProvider = ({ children }) => {
 
 	// custom hook destructurezation for products:
-	const { fetchProductsCategory, categoryProducts, fetchProduct, product } = useProducts();
+	const {
+		fetchProductsCategory,
+		categoryProducts,
+		fetchProduct,
+		product,
+		fetchProducts,
+		products,
+		fetchSearchedProducts,
+		searchedProducts
+	} = useProducts();
 
 	// [CART] handle:
 	const [productsOnCart, setProductsOnCart] = useState([])
@@ -47,7 +56,11 @@ const ProductsProvider = ({ children }) => {
 		addToCart,
 		productsOnCart,
 		addToWishlist,
-		productsOnWishlist
+		productsOnWishlist,
+		fetchProducts,
+		products,
+		fetchSearchedProducts,
+		searchedProducts
 	}
 
 	return (

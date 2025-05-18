@@ -1,16 +1,15 @@
 // react utility:
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // menu data import:
 import { topMenuData, mainMenuData } from "../../assets/utility-data";
 // logo per percorso assoluto:
 import logo from "../../../public/utility-img/logo.png";
 import { useProductsContext } from "../../context/ProductsContext";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 // ____________________________________________________
 function Header() {
 	const { productsOnCart, productsOnWishlist } = useProductsContext();
-
 	// products quantity handle:
 	const [productsQuantity, setProductsQuantity] = useState(0)
 	useMemo(() => {
@@ -19,6 +18,17 @@ function Header() {
 		}, 0)
 		setProductsQuantity(quantity);
 	}, [productsOnCart])
+
+	// searched products handle:
+	const search = useRef(null);
+	const navigate = useNavigate();
+	const submitSearch = (e) => {
+		e.preventDefault()
+		const query = search.current.value.trim()
+		navigate(`/searched-results?query=${encodeURIComponent(query)}`)
+		search.current.value = '';
+		search.current.blur();
+	};
 
 	return (
 		<>
@@ -32,8 +42,8 @@ function Header() {
 				</div>
 				<div className="main-header">
 					<div className="search-bar">
-						<form action="#">
-							<input type="text" placeholder="Cosa stai cercando?" />
+						<form action="#" onSubmit={e => submitSearch(e)}>
+							<input type="text" placeholder="Cosa stai cercando?" ref={search} />
 							<button><i className="fa-solid fa-magnifying-glass"></i></button>
 						</form>
 					</div>

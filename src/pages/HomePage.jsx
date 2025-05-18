@@ -27,7 +27,7 @@ function HomePage() {
 						</Link>
 					</div>
 					<div>
-						<Link to={"/category/Tv"}>
+						<Link to={"/category/Televisori"}>
 							<img src="../category-img/tv-category.webp" alt="" />
 						</Link>
 					</div>

@@ -8,7 +8,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePAge";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CategoryProductsPage from "./pages/CategoryProductsPage";
-
+import SearchedProductsPage from "./pages/SearchedProductsPage";
 // funzione per scroll to top ad ogni cambiamento delle pagine:
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -35,6 +35,7 @@ function App() {
               <Route path="/" Component={HomePage} />
               <Route path="/product-details/:id" Component={ProductDetailPage} />
               <Route path="/category/:categoryName" Component={CategoryProductsPage} />
+              <Route path="/searched-results" Component={SearchedProductsPage} />
             </Route>
           </Routes>
         </BrowserRouter>
