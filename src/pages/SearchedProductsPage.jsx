@@ -19,7 +19,10 @@ function SearchedProductsPage() {
 		<section className=" container section-spacer">
 			<h1>Risutato ricerca: {query}</h1>
 			<div className="searched-products-list">
-				<p>TROVATI: <span>{searchedProducts.length}</span> RISULTATI</p>
+				{searchedProducts.length === 1 ?
+					<p>TROVATO: <span>{searchedProducts.length}</span> RISULTATO</p> :
+					<p>TROVATI: <span>{searchedProducts.length}</span> RISULTATI</p>
+				}
 				<ProductsList productsData={searchedProducts}></ProductsList>
 			</div>
 		</section>

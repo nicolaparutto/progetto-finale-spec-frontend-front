@@ -37,9 +37,12 @@ function CategoryProducts() {
 		}
 		if (selectedOrder === "crescente") {
 			filtered = filtered.sort((a, b) => a.price - b.price)
-		}
-		if (selectedOrder === "decrescente") {
+		} else if (selectedOrder === "decrescente") {
 			filtered = filtered.sort((a, b) => b.price - a.price)
+		} else if (selectedOrder === "A-Z") {
+			filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
+		} else if (selectedOrder === "Z-A") {
+			filtered = filtered.sort((a, b) => b.title.localeCompare(a.title));
 		}
 		setProductsOrder(filtered)
 	}
@@ -68,6 +71,8 @@ function CategoryProducts() {
 								<option value="rilevanza" >Rilevanza</option>
 								<option value="crescente" >Prezzo crescente</option>
 								<option value="decrescente" >Prezzo decrescente</option>
+								<option value="A-Z" >Nome A-Z</option>
+								<option value="Z-A" >Nome Z-A</option>
 							</select>
 						</label>
 					</div>
