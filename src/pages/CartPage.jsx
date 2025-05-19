@@ -1,18 +1,27 @@
 import CartProductCard from "../components/utility/CartProductCard"
 import { useProductsContext } from "../context/ProductsContext"
+import { useMemo, useState } from "react";
 function CartPage() {
 
-	const { productsOnCart, addToCart } = useProductsContext();
+	const { productsOnCart } = useProductsContext();
+
+	const totalPrice = productsOnCart.reduce((price, curr) => {
+		return price += curr.price * curr.quantity
+	}, 0)
 	console.log(productsOnCart);
-	
+
 	return (
 		<section className="container cart-section section-spacer">
 			<div className="cart-products">
 				<h1>Il tuo carrello</h1>
 				<div className="cart-p-list">
-					<CartProductCard />
-					<CartProductCard />
-					<CartProductCard />
+					{
+						productsOnCart.length > 0 ?
+							(productsOnCart.map(p => (
+								<CartProductCard key={p.id} productData={p} />
+							))) :
+							<img src="utility-img/empty-cart.png" alt="" />
+					}
 				</div>
 			</div>
 			<div className="cart-payment">
@@ -27,19 +36,19 @@ function CartPage() {
 					<h3>Riepilogo ordine</h3>
 					<div className="order-price">
 						<div>
-							<p>Prodotti</p><span>€ 1.278,00</span>
+							<p>Prodotti</p><span>€ {totalPrice.toFixed(2)}</span>
 						</div>
 						<div>
 							<p>Servizi</p><span>€ 0,00</span>
 						</div>
 						<div>
-							<p>Subtotale</p><span>€ 1.278,00</span>
+							<p>Subtotale</p><span>€ {totalPrice.toFixed(2)}</span>
 						</div>
 						<div>
-							<p>Consegna</p><span>€ 10,00</span>
+							<p>Consegna</p><span>gratuita</span>
 						</div>
 						<div className="order-total">
-							<p>Totale</p> <span>€ 1.278,00</span>
+							<p>Totale</p> <span>€ {totalPrice.toFixed(2)}</span>
 						</div>
 					</div>
 					<button className="cart-btn">PROCEDI ALL"ACQUISTO</button>

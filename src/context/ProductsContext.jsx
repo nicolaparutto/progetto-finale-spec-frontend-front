@@ -34,7 +34,24 @@ const ProductsProvider = ({ children }) => {
 			setProductsOnCart(prev => [...prev, { ...product, quantity: 1 }])
 		}
 	}
-
+	const removeFromCart = (productId, howMany) => {
+		if (howMany === "oneProduct") {
+			setProductsOnCart(prev => {
+				return prev.map(p => {
+					if (p.id === productId) {
+						return { ...p, quantity: p.quantity - 1 }
+					} else {
+						return p
+					}
+				}
+				)
+			})
+		} else if (howMany === "allProducts") {
+			setProductsOnCart(prev => {
+				return prev.filter(p => p.id !== productId);
+			})
+		}
+	}
 	// [WISHLIST] handle:
 	const [productsOnWishlist, setProductsOnWishlist] = useState([])
 	const addToWishlist = (product) => {
@@ -54,6 +71,7 @@ const ProductsProvider = ({ children }) => {
 		fetchProduct,
 		product,
 		addToCart,
+		removeFromCart,
 		productsOnCart,
 		addToWishlist,
 		productsOnWishlist,

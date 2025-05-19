@@ -10,6 +10,7 @@ import { useMemo, useRef, useState } from "react";
 // ____________________________________________________
 function Header() {
 	const { productsOnCart, productsOnWishlist } = useProductsContext();
+
 	// products quantity handle:
 	const [productsQuantity, setProductsQuantity] = useState(0)
 	useMemo(() => {

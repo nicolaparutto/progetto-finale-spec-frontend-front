@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 import { memo } from "react";
 function ProductCard({ productData }) {
 	const { addToCart, addToWishlist } = useProductsContext();
-	const { title, category, price, image, id } = productData;
-	console.log("ciao");
+	const { title, category, price, image, id, brand } = productData;
 
 	const addCartHandle = () => {
 		addToCart(
-			{ id, title, category, price, image }
+			{ id, title, category, price, image, brand }
 		)
 	}
 	const addWishlistHandle = () => {
 		addToWishlist(
-			{ id, title, category, price, image }
+			{ id, title, category, price, image, brand }
 		)
 	}
 	return (
