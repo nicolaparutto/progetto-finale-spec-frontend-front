@@ -3,9 +3,10 @@ import { useProductsContext } from "../context/ProductsContext";
 import { useEffect } from "react";
 // ____________________________________________________
 function ProductDetailPage() {
-	const { id } = useParams()
+	const { prodId } = useParams()
 	const { fetchProduct, product, addToCart, addToWishlist } = useProductsContext()
 	const {
+		id,
 		category,
 		title,
 		description,
@@ -31,7 +32,7 @@ function ProductDetailPage() {
 	}
 
 	useEffect(() => {
-		fetchProduct(id)
+		fetchProduct(prodId)
 	}, [])
 	return (
 		<section className="container section-spacer">

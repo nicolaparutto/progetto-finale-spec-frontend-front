@@ -1,8 +1,8 @@
 import { useProductsContext } from "../context/ProductsContext";
 import { Link } from "react-router-dom";
 import { memo } from "react";
-function ProductCard({ productData }) {
-	const { addToCart, addToWishlist } = useProductsContext();
+function ProductCard({ productData, wishListbtnText }) {
+	const { addToCart, addToWishlist, removeFromWishlist } = useProductsContext();
 	const { title, category, price, image, id, brand } = productData;
 
 	const addCartHandle = () => {
@@ -10,11 +10,16 @@ function ProductCard({ productData }) {
 			{ id, title, category, price, image, brand }
 		)
 	}
-	const addWishlistHandle = () => {
-		addToWishlist(
-			{ id, title, category, price, image, brand }
-		)
+	const wishlistHandle = (whatToDo) => {
+		if (whatToDo === "AGGIUNGI ALLA WISHLIST") {
+			addToWishlist(
+				{ id, title, category, price, image, brand }
+			)
+		} else if (whatToDo === "RIMUOVI DALLA WISHLIST") {
+			removeFromWishlist(id)
+		}
 	}
+
 	return (
 		<div className="product-card">
 
@@ -32,7 +37,7 @@ function ProductCard({ productData }) {
 					</Link>
 					<div className="product-hover">
 						<button className="product-btn add-cart-btn" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
-						<button className="product-btn add-wishlist-btn" onClick={addWishlistHandle}>AGGIUNGI ALLA WISHLIST</button>
+						<button className="product-btn add-wishlist-btn" onClick={() => wishlistHandle(wishListbtnText)}>{wishListbtnText}</button>
 					</div>
 				</div>
 			</div>

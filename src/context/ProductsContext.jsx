@@ -64,7 +64,9 @@ const ProductsProvider = ({ children }) => {
 			setProductsOnWishlist(prev => [...prev, product])
 		}
 	}
-
+	const removeFromWishlist = (productId) => {
+		setProductsOnWishlist(prev => prev.filter(p => p.id !== productId))
+	}
 	const values = {
 		fetchProductsCategory,
 		categoryProducts,
@@ -74,6 +76,7 @@ const ProductsProvider = ({ children }) => {
 		removeFromCart,
 		productsOnCart,
 		addToWishlist,
+		removeFromWishlist,
 		productsOnWishlist,
 		fetchProducts,
 		products,

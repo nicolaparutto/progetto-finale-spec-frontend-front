@@ -127,7 +127,7 @@ function CategoryProducts() {
 							</form>
 						</details>
 					</div>
-					<ProductsList productsData={productsOrder}></ProductsList>
+					<ProductsList productsData={productsOrder} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
 
 				</div >
 			</section >

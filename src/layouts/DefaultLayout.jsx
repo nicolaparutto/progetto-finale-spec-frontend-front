@@ -7,13 +7,13 @@ import Footer from "../components/partials/Footer";
 function DefaultLayout() {
 	const location = useLocation()
 	const applyShadow = location.pathname.startsWith("/category/");
-
+	const applyGrayBg = location.pathname === ("/wishlist")
 	return (
 		<>
-			<header className={`lock-top ${applyShadow ? "header-shadow" : ""}`}>
+			<header className={`lock-top ${applyShadow && "header-shadow"}`}>
 				<Header />
 			</header >
-			<main>
+			<main className={` ${applyGrayBg && "main-gray-bg"}`}>
 				<Outlet />
 			</main>
 			<footer>

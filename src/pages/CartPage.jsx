@@ -8,7 +8,6 @@ function CartPage() {
 	const totalPrice = productsOnCart.reduce((price, curr) => {
 		return price += curr.price * curr.quantity
 	}, 0)
-	console.log(productsOnCart);
 
 	return (
 		<section className="container cart-section section-spacer">

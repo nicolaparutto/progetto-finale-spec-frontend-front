@@ -51,6 +51,10 @@ a {
   margin: 40px auto;
 }
 
+.main-gray-bg {
+  background-color: #F7F7F7;
+}
+
 /* ========== HEADER style ========== */
 .lock-top {
   position: fixed;
@@ -485,6 +489,8 @@ main {
         h6 {
           position: absolute;
           top: 100px;
+          left: 50%;
+          transform: translateX(-50%);
           font-size: 1.2rem;
           font-weight: 300;
         }
@@ -892,6 +898,72 @@ main {
 
           &:hover {
             background-color: #d6af00;
+          }
+        }
+      }
+    }
+  }
+
+  section.wishlist-section {
+    display: flex;
+    margin-top: 40px;
+
+    .wishlist-sidebar {
+      width: 20%;
+      margin-left: 15px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+
+      div:first-child {
+        i {
+          background-color: #fff;
+          border-radius: 100%;
+          padding: 14px 12px;
+          box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      div:last-child {
+        i {
+          background-color: var(--main-blue);
+          color: #fff;
+          font-size: 18px;
+          border-radius: 100%;
+          padding: 18px;
+          box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .wishlist-list {
+      width: 80%;
+      margin: 0 15px;
+      margin-bottom: 40px;
+
+      h1 {
+        text-align: left;
+        font-size: 2rem;
+      }
+
+      .p-list {
+        width: 100%;
+
+        .card-content {
+          background-color: #fff;
+        }
+
+        .empty-wishlist {
+          padding-bottom: 400px;
+
+          p {
+            margin-top: 20px;
           }
         }
       }

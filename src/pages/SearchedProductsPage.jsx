@@ -23,7 +23,7 @@ function SearchedProductsPage() {
 					<p>TROVATO: <span>{searchedProducts.length}</span> RISULTATO</p> :
 					<p>TROVATI: <span>{searchedProducts.length}</span> RISULTATI</p>
 				}
-				<ProductsList productsData={searchedProducts}></ProductsList>
+				<ProductsList productsData={searchedProducts} wishListbtnText={"AGGIUNGI ALLA WISHLIST"}></ProductsList>
 			</div>
 		</section>
 	)
