@@ -35,6 +35,7 @@ const useProducts = () => {
 			const response = await axios.get(`${apiUrl}/products/${id}`)
 			if (response.data.success === true) {
 				setProduct(response.data.product)
+				return response.data.product
 			}
 		} catch (error) {
 			console.error(`Errore durante il raggiungimento dei dati del prodotto ${id}: `, error.message)

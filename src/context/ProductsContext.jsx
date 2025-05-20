@@ -18,6 +18,7 @@ const ProductsProvider = ({ children }) => {
 
 	// [CART] handle:
 	const [productsOnCart, setProductsOnCart] = useState([])
+	// ADD:
 	const addToCart = (product) => {
 		const productPresent = productsOnCart.some(p => {
 			return p.id === product.id
@@ -34,6 +35,7 @@ const ProductsProvider = ({ children }) => {
 			setProductsOnCart(prev => [...prev, { ...product, quantity: 1 }])
 		}
 	}
+	// REMOVE:
 	const removeFromCart = (productId, howMany) => {
 		if (howMany === "oneProduct") {
 			setProductsOnCart(prev => {
@@ -52,8 +54,10 @@ const ProductsProvider = ({ children }) => {
 			})
 		}
 	}
+
 	// [WISHLIST] handle:
-	const [productsOnWishlist, setProductsOnWishlist] = useState([])
+	const [productsOnWishlist, setProductsOnWishlist] = useState([]);
+	// ADD:
 	const addToWishlist = (product) => {
 		const productPresent = productsOnWishlist.find(p => {
 			return p.id === product.id
@@ -64,9 +68,34 @@ const ProductsProvider = ({ children }) => {
 			setProductsOnWishlist(prev => [...prev, product])
 		}
 	}
+	// REMOVE:
 	const removeFromWishlist = (productId) => {
 		setProductsOnWishlist(prev => prev.filter(p => p.id !== productId))
 	}
+
+	// [COMPARISON] handle:
+	const [productsToCompare, setProductsToCompare] = useState([]);
+	const addToCompare = async (id) => {
+		const isPresent = productsToCompare.some(p => p.id === id)
+		if (isPresent) {
+			console.log("non puoi confrontare due prodotti uguali")
+			return
+		}
+		if (productsToCompare.length === 2) {
+			console.log("stai gia confrontando due prodotti")
+			return
+		} else {
+			const product = await fetchProduct(id)
+			if (product) {
+				setProductsToCompare(prev => {
+					return [...prev, product]
+				})
+			}
+		}
+	}
+
+	console.log(productsToCompare);
+
 	const values = {
 		fetchProductsCategory,
 		categoryProducts,
@@ -81,7 +110,9 @@ const ProductsProvider = ({ children }) => {
 		fetchProducts,
 		products,
 		fetchSearchedProducts,
-		searchedProducts
+		searchedProducts,
+		addToCompare,
+		productsToCompare
 	}
 
 	return (

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 // ____________________________________________________
 function ProductDetailPage() {
 	const { prodId } = useParams()
-	const { fetchProduct, product, addToCart, addToWishlist } = useProductsContext()
+	const { fetchProduct, product, addToCart, addToWishlist, addToCompare } = useProductsContext()
 	const {
 		id,
 		category,
@@ -44,8 +44,15 @@ function ProductDetailPage() {
 					<div>
 						<h2>{title}</h2>
 						<div>
-							<i className="fa-solid fa-circle-info"></i>
-							<i className="fa-solid fa-share-nodes"></i>
+							<button>
+								<i className="fa-solid fa-circle-info"></i>
+							</button>
+							<button>
+								<i className="fa-solid fa-share-nodes"></i>
+							</button>
+							<button onClick={() => addToCompare(id)}>
+								<i className="fa-solid fa-arrow-right-arrow-left"></i>
+							</button>
 						</div>
 					</div>
 					<div>
@@ -68,7 +75,7 @@ function ProductDetailPage() {
 						<button className="add-cart" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
 					</div>
 					<div className="add-service">
-						<p><span>VUOI AGGIUNGERE UN SERVIZIO?</span></p>
+						<p><span>VUOI CONFRONTARLO CON UN ALTRO PRODOTTO?</span></p>
 						<p><span>Scopri qui</span> tutti i servizi disponibili per il tuo acquisto</p>
 					</div>
 				</div>

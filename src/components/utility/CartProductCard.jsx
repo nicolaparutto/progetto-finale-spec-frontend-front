@@ -1,7 +1,7 @@
 import { useProductsContext } from "../../context/ProductsContext";
 function CartProductCard({ productData }) {
 	const { id, title, brand, image, price, quantity, category } = productData;
-	const { addToCart, removeFromCart } = useProductsContext();
+	const { addToCart, removeFromCart, addToCompare, addToWishlist } = useProductsContext();
 
 	const addCartHandle = () => {
 		addToCart(
@@ -18,10 +18,16 @@ function CartProductCard({ productData }) {
 			removeFromCart(id, howMany)
 		}
 	}
+	const addWishlistHandle = () => {
+		addToWishlist(
+			{ id, title, category, price, image, brand }
+		)
+	}
 	return (
 		<div className="cart-p-card">
 			<div className="cart-p-card-intestation">
-				<button><i className="fa-regular fa-heart"></i></button>
+				<button onClick={addWishlistHandle}><i className="fa-regular fa-heart"></i></button>
+				<button onClick={() => addToCompare(id)}><i className="fa-solid fa-arrow-right-arrow-left"></i></button>
 				<button onClick={() => removeCartHandle(id, "allProducts")}><i className="fa-solid fa-trash-can"></i></button>
 			</div>
 			<div className="cart-p-card-content">
