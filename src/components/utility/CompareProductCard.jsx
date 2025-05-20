@@ -1,10 +1,12 @@
+import { useProductsContext } from "../../context/ProductsContext";
 function CompareProductCard({ productData }) {
-	const { image, category, title, brand, releaseYear, description, displayDimensions, displayPresence, connectivity, price } = productData;
-
+	const { id, image, category, title, brand, releaseYear, description, displayDimensions, displayPresence, connectivity, price } = productData;
+	const { removeFromCompare } = useProductsContext();
 
 	return (
 		<div className="compare-product-card">
 			<div>
+				<button onClick={() => removeFromCompare(id)}>RIMUOVI</button>
 				<img src={image} alt="" />
 			</div>
 			<ul>

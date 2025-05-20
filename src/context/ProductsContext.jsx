@@ -74,6 +74,7 @@ const ProductsProvider = ({ children }) => {
 	}
 
 	// [COMPARISON] handle:
+	// ADD:
 	const [productsToCompare, setProductsToCompare] = useState([]);
 	const addToCompare = async (id) => {
 		const isPresent = productsToCompare.some(p => p.id === id)
@@ -93,10 +94,18 @@ const ProductsProvider = ({ children }) => {
 			}
 		}
 	}
+	// REMOVE:
+	const removeFromCompare = (id) => {
+		setProductsToCompare(prev => {
+			return prev.filter(p => {
+				return p.id !== id
+			})
+		})
+	}
 	// when to show comparison panel:
 	const [showComparePanel, setShowComparePanel] = useState(false)
 	useEffect(() => {
-		if (productsToCompare.length >= 1) {
+		if (productsToCompare.length > 0) {
 			setShowComparePanel(true)
 		}
 	}, [productsToCompare])
@@ -117,6 +126,7 @@ const ProductsProvider = ({ children }) => {
 		fetchSearchedProducts,
 		searchedProducts,
 		addToCompare,
+		removeFromCompare,
 		productsToCompare,
 		showComparePanel
 	}
