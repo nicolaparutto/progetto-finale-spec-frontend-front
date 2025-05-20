@@ -11,7 +11,7 @@ import CategoryProductsPage from "./pages/CategoryProductsPage";
 import SearchedProductsPage from "./pages/SearchedProductsPage";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishListPage";
-import ComparisionPage from "./pages/ComparisionPage";
+import ComparisonPage from "./pages/ComparisonPage";
 
 // funzione per scroll to top ad ogni cambiamento delle pagine:
 import { useEffect } from "react";
@@ -42,7 +42,7 @@ function App() {
               <Route path="/searched-results" Component={SearchedProductsPage} />
               <Route path="/cart" Component={CartPage} />
               <Route path="/wishlist" Component={WishlistPage} />
-              <Route path="/comparision" Component={ComparisionPage} />
+              <Route path="/comparison" Component={ComparisonPage} />
             </Route>
           </Routes>
         </BrowserRouter>

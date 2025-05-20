@@ -7,7 +7,14 @@ import ComparisonPanel from "../components/utility/ComparisonPanel";
 // ____________________________________________________
 function DefaultLayout() {
 	const location = useLocation()
-	const applyShadow = location.pathname.startsWith("/category/");
+	const applyShadow =
+		location.pathname.startsWith("/category") ||
+		location.pathname.startsWith("/product-details") ||
+		location.pathname.startsWith("/searched-results") ||
+		location.pathname === ("/comparison") ||
+		location.pathname === ("/wishlist") ||
+		location.pathname === ("/cart");
+
 	const applyGrayBg = location.pathname === ("/wishlist");
 
 	return (

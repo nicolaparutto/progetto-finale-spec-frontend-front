@@ -17,7 +17,7 @@ function ComparisonPanel() {
 			<div className="compare-panel-content">
 				<h4>Prodotti da comparare: </h4>
 				<p>{productsToCompare.length}</p>
-				<button onClick={() => setHandleShow(true)}><Link to={"/comparision"}>VISUALIZZA</Link></button>
+				<button onClick={() => setHandleShow(true)}><Link to={"/comparison"}>VISUALIZZA</Link></button>
 			</div>
 		</div>
 	)

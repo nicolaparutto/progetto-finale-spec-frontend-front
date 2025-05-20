@@ -1059,6 +1059,98 @@ main {
       }
     }
   }
+
+  section.compare-products-section {
+    padding: 0 15px;
+
+    h1 {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .compare-list {
+      display: flex;
+
+      .compare-sidebar {
+        width: 20%;
+
+        ul {
+          list-style: none;
+
+          li {
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            height: 80px;
+            background-color: #ebebeb;
+            margin: 5px 0;
+            border: 2px solid var(--main-blue);
+            border-radius: 10px;
+          }
+
+          li:nth-child(1) {
+            height: 200px;
+          }
+
+          li:nth-child(6) {
+            height: 300px;
+          }
+        }
+      }
+
+      .compare-product-card {
+        width: 40%;
+
+        div {
+          height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 5px;
+          border: 5px solid #fcfcfc;
+          border-radius: 10px;
+
+          img {
+            width: 140px;
+          }
+        }
+
+        ul {
+          list-style: none;
+          text-align: center;
+
+          li {
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            margin: 5px;
+            border-radius: 10px;
+          }
+
+          li:nth-child(5) {
+            padding: 20px;
+            height: 300px;
+          }
+
+          li:last-child {
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+
+          div {
+            height: 100px;
+
+            img {
+              width: 100px
+            }
+          }
+        }
+
+      }
+    }
+  }
 }
 
 /* ========== FOOTER style ========== */
