@@ -31,8 +31,10 @@ const ProductsProvider = ({ children }) => {
 						: p
 				);
 			})
+			createPanel(true, "Prodotto aggiunto al carrello")
 		} else {
 			setProductsOnCart(prev => [...prev, { ...product, quantity: 1 }])
+			createPanel(true, "Prodotto aggiunto al carrello")
 		}
 	}
 	// REMOVE:
@@ -48,10 +50,12 @@ const ProductsProvider = ({ children }) => {
 				}
 				)
 			})
+			createPanel(true, "Rimosso un prodotto dal carrello")
 		} else if (howMany === "allProducts") {
 			setProductsOnCart(prev => {
 				return prev.filter(p => p.id !== productId);
 			})
+			createPanel(true, "Rimosso tutti i prodotti dal carrello")
 		}
 	}
 
@@ -63,14 +67,16 @@ const ProductsProvider = ({ children }) => {
 			return p.id === product.id
 		})
 		if (productPresent) {
-			console.log("prodotto gia incluso")
+			createPanel(true, "Prodotto gia incluso nella wishlist")
 		} else {
 			setProductsOnWishlist(prev => [...prev, product])
+			createPanel(true, "Prodotto aggiunto alla wishlist")
 		}
 	}
 	// REMOVE:
 	const removeFromWishlist = (productId) => {
 		setProductsOnWishlist(prev => prev.filter(p => p.id !== productId))
+		createPanel(true, "Prodotto rimosso dalla wishlist")
 	}
 
 	// [COMPARISON] handle:
@@ -79,11 +85,11 @@ const ProductsProvider = ({ children }) => {
 	const addToCompare = async (id) => {
 		const isPresent = productsToCompare.some(p => p.id === id)
 		if (isPresent) {
-			console.log("non puoi confrontare due prodotti uguali")
+			createPanel(true, "Non puoi confrontare due prodotti uguali")
 			return
 		}
 		if (productsToCompare.length === 2) {
-			console.log("stai gia confrontando due prodotti")
+			createPanel(true, "Limite massimo per il confronto: 2 Prodotti")
 			return
 		} else {
 			const product = await fetchProduct(id)
@@ -91,6 +97,7 @@ const ProductsProvider = ({ children }) => {
 				setProductsToCompare(prev => {
 					return [...prev, product]
 				})
+				createPanel(true, "Prodotto aggiunto al confronto")
 			}
 		}
 	}
@@ -110,6 +117,16 @@ const ProductsProvider = ({ children }) => {
 		}
 	}, [productsToCompare])
 
+	// [NOTIFICATION PANEL] handle:
+	const [showPanel, setShowPanel] = useState({ show: false, content: "" });
+	function createPanel(state, text) {
+		setShowPanel({ show: state, content: text })
+		setTimeout(() => {
+			setShowPanel({ show: false, content: text })
+		}, 3000)
+	}
+
+
 	const values = {
 		fetchProductsCategory,
 		categoryProducts,
@@ -128,7 +145,9 @@ const ProductsProvider = ({ children }) => {
 		addToCompare,
 		removeFromCompare,
 		productsToCompare,
-		showComparePanel
+		showComparePanel,
+		createPanel,
+		showPanel
 	}
 
 	return (

@@ -4,6 +4,8 @@ import { useProductsContext } from "../context/ProductsContext";
 import Header from "../components/partials/Header";
 import Footer from "../components/partials/Footer";
 import ComparisonPanel from "../components/utility/ComparisonPanel";
+import NotificationPanel from "../components/utility/NotificationPanel";
+
 // ____________________________________________________
 function DefaultLayout() {
 	const location = useLocation()
@@ -25,6 +27,7 @@ function DefaultLayout() {
 			<main className={` ${applyGrayBg && "main-gray-bg"}`}>
 				<Outlet />
 				<ComparisonPanel />
+				<NotificationPanel />
 			</main>
 			<footer>
 				<Footer />
