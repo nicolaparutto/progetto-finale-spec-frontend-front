@@ -55,6 +55,61 @@ a {
   background-color: #F7F7F7;
 }
 
+/* ========== MODALS style ========== */
+.compare-panel-modal {
+  position: fixed;
+  top: 50%;
+  right: -300px;
+  transform: translateY(-50%);
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+
+  .show-compare-btn {
+    border: none;
+    padding: 0 15px;
+    height: 80px;
+    border-radius: 15px 0px 0px 15px;
+    background-color: #CCCCCC;
+    color: #fff;
+  }
+
+  .compare-panel-content {
+    width: 200px;
+    height: 120px;
+    background-color: var(--main-blue);
+    padding: 15px;
+    color: #fff;
+    border-radius: 10px 0px 0px 10px;
+    text-align: center;
+
+    h4 {
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      border: none;
+      border-radius: 100px;
+      background-color: #fff;
+
+      a {
+        display: block;
+        padding: 8px 11px;
+      }
+    }
+  }
+}
+
+.compareVisible {
+  right: 0px;
+}
+
+.handleCompareVisible {
+  right: -200px;
+}
+
 /* ========== HEADER style ========== */
 .lock-top {
   position: fixed;

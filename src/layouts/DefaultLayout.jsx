@@ -1,13 +1,15 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { useProductsContext } from "../context/ProductsContext";
 // components:
 import Header from "../components/partials/Header";
 import Footer from "../components/partials/Footer";
-
+import ComparisonPanel from "../components/utility/ComparisonPanel";
 // ____________________________________________________
 function DefaultLayout() {
 	const location = useLocation()
 	const applyShadow = location.pathname.startsWith("/category/");
-	const applyGrayBg = location.pathname === ("/wishlist")
+	const applyGrayBg = location.pathname === ("/wishlist");
+
 	return (
 		<>
 			<header className={`lock-top ${applyShadow && "header-shadow"}`}>
@@ -15,6 +17,7 @@ function DefaultLayout() {
 			</header >
 			<main className={` ${applyGrayBg && "main-gray-bg"}`}>
 				<Outlet />
+				<ComparisonPanel />
 			</main>
 			<footer>
 				<Footer />

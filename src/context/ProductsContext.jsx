@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 const ProductsContext = createContext();
 import useProducts from "../hooks/useProducts";
 
@@ -93,8 +93,13 @@ const ProductsProvider = ({ children }) => {
 			}
 		}
 	}
-
-	console.log(productsToCompare);
+	// when to show comparison panel:
+	const [showComparePanel, setShowComparePanel] = useState(false)
+	useEffect(() => {
+		if (productsToCompare.length >= 1) {
+			setShowComparePanel(true)
+		}
+	}, [productsToCompare])
 
 	const values = {
 		fetchProductsCategory,
@@ -112,7 +117,8 @@ const ProductsProvider = ({ children }) => {
 		fetchSearchedProducts,
 		searchedProducts,
 		addToCompare,
-		productsToCompare
+		productsToCompare,
+		showComparePanel
 	}
 
 	return (

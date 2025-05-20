@@ -23,7 +23,6 @@ function ProductDetailPage() {
 		addToCart(
 			{ id, title, category, price, image }
 		)
-
 	}
 	const addWishlistHandle = () => {
 		addToWishlist(
