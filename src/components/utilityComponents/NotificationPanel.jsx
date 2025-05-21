@@ -1,7 +1,7 @@
-import { useProductsContext } from "../../context/ProductsContext"
+import { useProductsContext } from "../../context/ProductsContext";
 
 function NotificationPanel() {
-	const { showPanel } = useProductsContext()
+	const { showPanel } = useProductsContext();
 
 	return (
 		<div className={`notification-panel ${showPanel.show ? "show" : "hide"}`}>

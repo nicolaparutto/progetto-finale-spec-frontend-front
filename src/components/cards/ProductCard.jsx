@@ -1,27 +1,26 @@
-import { useProductsContext } from "../context/ProductsContext";
-import { Link } from "react-router-dom";
 import { memo } from "react";
+import { Link } from "react-router-dom";
+import { useProductsContext } from "../../context/ProductsContext";
+
 function ProductCard({ productData, wishListbtnText }) {
 	const { addToCart, addToWishlist, removeFromWishlist, addToCompare } = useProductsContext();
 	const { id, title, category, price, image, brand } = productData;
 
-	const addCartHandle = () => {
-		addToCart(
-			{ id, title, category, price, image, brand }
-		)
-	}
+	const prodToadd = { id, title, category, price, image, brand };
+	
+	// cart:
+	const addCartHandle = () => addToCart(prodToadd);
+	// wishlist:
 	const addWishlistHandle = (whatToDo) => {
 		if (whatToDo === "AGGIUNGI ALLA WISHLIST") {
-			addToWishlist(
-				{ id, title, category, price, image, brand }
-			)
+			addToWishlist(prodToadd);
 		} else if (whatToDo === "RIMUOVI DALLA WISHLIST") {
-			removeFromWishlist(id)
+			removeFromWishlist(id);
 		}
 	}
-	const addCompareHandle = () => {
-		addToCompare(id)
-	}
+	// compare:
+	const addCompareHandle = () => addToCompare(id);
+
 	return (
 		<div className="product-card">
 			<div className="card-content">
@@ -30,7 +29,7 @@ function ProductCard({ productData, wishListbtnText }) {
 				</button>
 				<Link to={`/product-details/${id}`}>
 					<div className="card-img">
-						<img src={`../${image}`} alt="product" />
+						<img src={`/${image}`} alt="Prodotto" />
 					</div>
 				</Link>
 				<div className="card-text">
@@ -46,7 +45,6 @@ function ProductCard({ productData, wishListbtnText }) {
 					</div>
 				</div>
 			</div>
-
 		</div >
 	)
 }

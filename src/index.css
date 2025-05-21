@@ -164,13 +164,16 @@ header {
   .top-menu-header {
     line-height: 40px;
     font-size: 14px;
-    color: var(--main-blue);
     margin: 0 15px;
 
     ul {
       li {
         margin-right: 40px;
         cursor: pointer;
+
+        a {
+          color: var(--main-blue);
+        }
       }
     }
   }

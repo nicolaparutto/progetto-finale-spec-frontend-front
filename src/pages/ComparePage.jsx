@@ -1,8 +1,7 @@
 import { useProductsContext } from "../context/ProductsContext"
-import CompareProductCard from "../components/utility/CompareProductCard";
-function ComparisionPage() {
+import CompareProductCard from "../components/cards/CompareProductCard";
+function ComparePage() {
 	const { productsToCompare } = useProductsContext();
-	console.log(productsToCompare);
 
 	return (
 		<section className="container compare-products-section section-spacer">
@@ -30,4 +29,4 @@ function ComparisionPage() {
 	)
 }
 
-export default ComparisionPage
+export default ComparePage

@@ -1,32 +1,33 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useProductsContext } from "../context/ProductsContext";
+
 // components:
-import Header from "../components/partials/Header";
-import Footer from "../components/partials/Footer";
-import ComparisonPanel from "../components/utility/ComparisonPanel";
-import NotificationPanel from "../components/utility/NotificationPanel";
+import Header from "../components/partials/header/Header";
+import Footer from "../components/partials/footer/Footer";
+import ComparePanel from "../components/utilityComponents/ComparePanel";
+import NotificationPanel from "../components/utilityComponents/NotificationPanel";
 
-// ____________________________________________________
 function DefaultLayout() {
-	const location = useLocation()
-	const applyShadow =
-		location.pathname.startsWith("/category") ||
-		location.pathname.startsWith("/product-details") ||
-		location.pathname.startsWith("/searched-results") ||
-		location.pathname === ("/comparison") ||
-		location.pathname === ("/wishlist") ||
-		location.pathname === ("/cart");
-
-	const applyGrayBg = location.pathname === ("/wishlist");
+	// CSS based on paths:
+	const location = useLocation();
+	const shadowPaths = [
+		"/category",
+		"/product-details",
+		"/searched-results",
+		"/cart",
+		"/wishlist",
+		"/compare"
+	];
+	const applyShadow = shadowPaths.some(path => location.pathname.startsWith(path));
+	const applyGrayBg = location.pathname === "/wishlist";
 
 	return (
 		<>
-			<header className={`lock-top ${applyShadow && "header-shadow"}`}>
+			<header className={`lock-top ${applyShadow ? "header-shadow" : ""}`}>
 				<Header />
 			</header >
-			<main className={` ${applyGrayBg && "main-gray-bg"}`}>
+			<main className={` ${applyGrayBg ? "main-gray-bg" : ""}`}>
 				<Outlet />
-				<ComparisonPanel />
+				<ComparePanel />
 				<NotificationPanel />
 			</main>
 			<footer>

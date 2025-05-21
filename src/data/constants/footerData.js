@@ -1,23 +1,3 @@
-// Header:
-const topMenuData = [
-	"Negozi",
-	"Volantini",
-	"Servizi",
-	"Star Club",
-	"Magazine"
-];
-const mainMenuData = [
-	"Informatica",
-	"Gaming",
-	"Telefonia",
-	"Tv e Audio",
-	"Elettrodomestici",
-	"Foto, Video, Droni",
-	"Mobilità Elettrica",
-	"Lifestyle", "Green Tech",
-	"Outlet"
-];
-
 // Footer:
 const footerAgency = [
 	"Chi siamo",
@@ -41,7 +21,6 @@ const footerAcquisitions = [
 	"Compra ora e paga dopo",
 	"Consegna e Installazione",
 ];
-
 const footerClients = [
 	"Contattaci",
 	"Carta Boolronics",
@@ -50,7 +29,6 @@ const footerClients = [
 	"Servizi Serena",
 	"Servizi Altri",
 ]
-
 const footerPrivacy = [
 	"Gestione cookie",
 	"Privacy Policy",
@@ -61,10 +39,7 @@ const footerPrivacy = [
 	"Mappa marche",
 	"Elenco negozi",
 ]
-
 export {
-	topMenuData,
-	mainMenuData,
 	footerAgency,
 	footerAcquisitions,
 	footerClients,

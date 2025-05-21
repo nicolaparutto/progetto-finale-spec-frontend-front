@@ -1,26 +1,26 @@
-import CartProductCard from "../components/utility/CartProductCard"
-import { useProductsContext } from "../context/ProductsContext"
-import { useMemo, useState } from "react";
-function CartPage() {
+import { useMemo } from "react";
+import CartProductCard from "../components/cards/CartProductCard";
+import { useProductsContext } from "../context/ProductsContext";
 
+function CartPage() {
 	const { productsOnCart } = useProductsContext();
 
-	const totalPrice = productsOnCart.reduce((price, curr) => {
-		return price += curr.price * curr.quantity
-	}, 0)
+	const totalPrice = useMemo(() => {
+		return productsOnCart.reduce((price, curr) => price + curr.price * curr.quantity, 0);
+	}, [productsOnCart]);
 
 	return (
 		<section className="container cart-section section-spacer">
 			<div className="cart-products">
 				<h1>Il tuo carrello</h1>
 				<div className="cart-p-list">
-					{
-						productsOnCart.length > 0 ?
-							(productsOnCart.map(p => (
-								<CartProductCard key={p.id} productData={p} />
-							))) :
-							<img src="utility-img/empty-cart.png" alt="" />
-					}
+					{productsOnCart.length > 0 ? (
+						productsOnCart.map(p => (
+							<CartProductCard key={p.id} productData={p} />
+						))
+					) : (
+						<img src="/IMG_utilities/empty-cart.png" alt="" />
+					)}
 				</div>
 			</div>
 			<div className="cart-payment">
@@ -50,7 +50,7 @@ function CartPage() {
 							<p>Totale</p> <span>€ {totalPrice.toFixed(2)}</span>
 						</div>
 					</div>
-					<button className="cart-btn">PROCEDI ALL"ACQUISTO</button>
+					<button className="cart-btn">PROCEDI ALL'ACQUISTO</button>
 				</div>
 			</div>
 		</section>

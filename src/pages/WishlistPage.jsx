@@ -1,5 +1,6 @@
 import { useProductsContext } from "../context/ProductsContext"
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/cards/ProductCard";
+
 function WishlistPage() {
 	const { productsOnWishlist } = useProductsContext();
 
@@ -16,16 +17,15 @@ function WishlistPage() {
 			<div className="wishlist-list">
 				<h1>Wishlist</h1>
 				<div className="p-list">
-					{productsOnWishlist.length > 0 ?
-						(
-							productsOnWishlist.map(p => (
-								<ProductCard key={p.id} productData={p} wishListbtnText={"RIMUOVI DALLA WISHLIST"} />
-							))
-						) :
+					{productsOnWishlist.length > 0 ? (
+						productsOnWishlist.map(p => (
+							<ProductCard key={p.id} productData={p} wishListbtnText={"RIMUOVI DALLA WISHLIST"} />
+						))
+					) : (
 						<div className="empty-wishlist">
 							<p>La lista è vuota.</p>
 						</div>
-					}
+					)}
 				</div>
 			</div>
 		</section>

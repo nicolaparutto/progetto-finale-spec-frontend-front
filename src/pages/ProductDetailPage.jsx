@@ -3,8 +3,8 @@ import { useProductsContext } from "../context/ProductsContext";
 import { useEffect } from "react";
 // ____________________________________________________
 function ProductDetailPage() {
-	const { prodId } = useParams()
-	const { fetchProduct, product, addToCart, addToWishlist, addToCompare } = useProductsContext()
+	const { prodId } = useParams();
+	const { fetchProduct, product, addToCart, addToWishlist, addToCompare } = useProductsContext();
 	const {
 		id,
 		category,
@@ -19,25 +19,22 @@ function ProductDetailPage() {
 		connectivity
 	} = product;
 
-	const addCartHandle = () => {
-		addToCart(
-			{ id, title, category, price, image }
-		)
-	}
-	const addWishlistHandle = () => {
-		addToWishlist(
-			{ id, title, category, price, image }
-		)
-	}
+	const prodToadd = { id, title, category, price, image, brand };
+
+	// cart:
+	const addCartHandle = () => addToCart(prodToadd);
+	// wishlist:
+	const addWishlistHandle = () => addToWishlist(prodToadd);
 
 	useEffect(() => {
-		fetchProduct(prodId)
-	}, [])
+		fetchProduct(prodId);
+	}, []);
+
 	return (
 		<section className="container section-spacer">
 			<div className="product-details-section">
 				<div className="details-img">
-					<img src={`../${image}`} alt="product" />
+					<img src={`/${image}`} alt="product" />
 				</div>
 				<div className="details-info">
 					<div>
@@ -104,7 +101,6 @@ function ProductDetailPage() {
 					</div>
 				</div>
 			</div>
-
 		</section>
 	)
 }

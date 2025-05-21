@@ -1,30 +1,30 @@
-// react utility:
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useProductsContext } from "../context/ProductsContext";
-//components:
-import ProductsList from "../components/utility/ProductsList";
+import ProductsList from "../components/ProductsList";
+
 function CategoryProducts() {
 	const { categoryName } = useParams();
-	// context:
 	const { fetchProductsCategory, categoryProducts } = useProductsContext();
-	// products list and ordered:
-	const [productsOrder, setProductsOrder] = useState(categoryProducts);
-	// products brands:
-	const productsBrand = categoryProducts.reduce((brands, p) => {
-		if (!brands.includes(p.brand)) {
-			brands.push(p.brand)
-		}
-		return brands
-	}, [])
-	// filter system:
+
+	// find products brands:
+	const productsBrand = useMemo(() => {
+		return categoryProducts.reduce((brands, p) => {
+			if (!brands.includes(p.brand)) {
+				brands.push(p.brand);
+			}
+			return brands;
+		}, []);
+	}, [categoryProducts]);
+
+	// filters:
 	const [selectedPrice, setSelectedPrice] = useState(null);
 	const [selectedBrand, setSelectedBrand] = useState("");
 	const [selectedOrder, setSelectedOrder] = useState("rilevanza");
-
 	// filter function:
-	const filterProducts = () => {
+	const filteredProducts = useMemo(() => {
 		let filtered = [...categoryProducts]
+		// price:
 		if (selectedPrice === "opt1") {
 			filtered = filtered.filter(p => p.price <= 300);
 		} else if (selectedPrice === "opt2") {
@@ -32,32 +32,32 @@ function CategoryProducts() {
 		} else if (selectedPrice === "opt3") {
 			filtered = filtered.filter(p => p.price > 500);
 		}
+		// brand:
 		if (selectedBrand) {
 			filtered = filtered.filter(p => p.brand === selectedBrand);
 		}
+		// orders:
 		if (selectedOrder === "crescente") {
-			filtered = filtered.sort((a, b) => a.price - b.price)
+			filtered = filtered.sort((a, b) => a.price - b.price);
 		} else if (selectedOrder === "decrescente") {
-			filtered = filtered.sort((a, b) => b.price - a.price)
+			filtered = filtered.sort((a, b) => b.price - a.price);
 		} else if (selectedOrder === "A-Z") {
 			filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
 		} else if (selectedOrder === "Z-A") {
 			filtered = filtered.sort((a, b) => b.title.localeCompare(a.title));
 		}
-		setProductsOrder(filtered)
+		return filtered
+	}, [categoryProducts, selectedPrice, selectedBrand, selectedOrder])
+	//remove filter:
+	const handleRemoveFilters = () => {
+		setSelectedPrice(null);
+		setSelectedBrand("");
+		setSelectedOrder("rilevanza");
 	}
-	// useEffect al cambiamento dei filtri:
+
 	useEffect(() => {
-		filterProducts();
-	}, [selectedPrice, selectedBrand, selectedOrder]);
-	// useEffect per settare la lista prodotti al cambiamento di categoryProducts:
-	useEffect(() => {
-		setProductsOrder(categoryProducts);
-	}, [categoryProducts]);
-	// fetch dei prodotti al caricamento del componente:
-	useEffect(() => {
-		fetchProductsCategory(categoryName)
-	}, [])
+		fetchProductsCategory(categoryName);
+	}, []);
 
 	return (
 		<>
@@ -88,7 +88,7 @@ function CategoryProducts() {
 					<div className="p-filters">
 						<div className="filters-intestation">
 							<h3>Filtri</h3>
-							<button className="remove-filter-btn" onClick={() => setProductsOrder(categoryProducts)}>Rimuovi filtri</button>
+							<button className="remove-filter-btn" onClick={handleRemoveFilters}>Rimuovi filtri</button>
 						</div>
 						<details className="filter">
 							<summary>
@@ -97,15 +97,15 @@ function CategoryProducts() {
 							</summary>
 							<form className="filter-options">
 								<label>
-									<input type="radio" name="price" value="opt1" onChange={e => setSelectedPrice(e.target.value)} />
+									<input type="radio" name="price" value="opt1" checked={selectedPrice === "opt1"} onChange={e => setSelectedPrice(e.target.value)} />
 									<span>fino a € 300</span>
 								</label>
 								<label>
-									<input type="radio" name="price" value="opt2" onChange={e => setSelectedPrice(e.target.value)} />
+									<input type="radio" name="price" value="opt2" checked={selectedPrice === "opt2"} onChange={e => setSelectedPrice(e.target.value)} />
 									<span>da € 300 a € 500</span>
 								</label>
 								<label>
-									<input type="radio" name="price" value="opt3" onChange={e => setSelectedPrice(e.target.value)} />
+									<input type="radio" name="price" value="opt3" checked={selectedPrice === "opt3"} onChange={e => setSelectedPrice(e.target.value)} />
 									<span>oltre € 500</span>
 								</label>
 							</form>
@@ -119,7 +119,7 @@ function CategoryProducts() {
 								{productsBrand.map((b, i) => (
 									<div key={i}>
 										<label>
-											<input type="radio" name="brand" value={b} onChange={e => setSelectedBrand(e.target.value)} />
+											<input type="radio" name="brand" value={b} checked={selectedBrand === b} onChange={e => setSelectedBrand(e.target.value)} />
 											<span>{b}</span>
 										</label>
 									</div>
@@ -127,8 +127,7 @@ function CategoryProducts() {
 							</form>
 						</details>
 					</div>
-					<ProductsList productsData={productsOrder} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
-
+					<ProductsList productsData={filteredProducts} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
 				</div >
 			</section >
 		</>

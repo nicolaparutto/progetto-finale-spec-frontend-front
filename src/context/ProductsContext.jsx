@@ -3,151 +3,125 @@ const ProductsContext = createContext();
 import useProducts from "../hooks/useProducts";
 
 const ProductsProvider = ({ children }) => {
-
-	// custom hook destructurezation for products:
+	// [useProducts] HOOK:
 	const {
-		fetchProductsCategory,
-		categoryProducts,
-		fetchProduct,
-		product,
-		fetchProducts,
-		products,
-		fetchSearchedProducts,
-		searchedProducts
+		fetchProducts, products,
+		fetchProduct, product,
+		fetchProductsCategory, categoryProducts,
+		fetchSearchedProducts, searchedProducts
 	} = useProducts();
 
-	// [CART] handle:
-	const [productsOnCart, setProductsOnCart] = useState([])
+	// [function] check products presence:
+	function isProductPresence(array, idToCheck) {
+		return array.some(p => p.id === idToCheck);
+	}
+
+	// =====[CART]===== handle:
+	const [productsOnCart, setProductsOnCart] = useState([]);
 	// ADD:
 	const addToCart = (product) => {
-		const productPresent = productsOnCart.some(p => {
-			return p.id === product.id
-		})
-		if (productPresent) {
+		if (isProductPresence(productsOnCart, product.id)) {
 			setProductsOnCart(prev => {
 				return prev.map(p =>
-					p.id === product.id
-						? { ...p, quantity: p.quantity + 1 }
-						: p
-				);
+					p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+				)
 			})
-			createPanel(true, "Prodotto aggiunto al carrello")
+			createPanel(true, "Prodotto aggiunto al carrello");
 		} else {
-			setProductsOnCart(prev => [...prev, { ...product, quantity: 1 }])
-			createPanel(true, "Prodotto aggiunto al carrello")
+			setProductsOnCart(prev => [...prev, { ...product, quantity: 1 }]);
+			createPanel(true, "Prodotto aggiunto al carrello");
 		}
 	}
 	// REMOVE:
 	const removeFromCart = (productId, howMany) => {
 		if (howMany === "oneProduct") {
 			setProductsOnCart(prev => {
-				return prev.map(p => {
-					if (p.id === productId) {
-						return { ...p, quantity: p.quantity - 1 }
-					} else {
-						return p
-					}
-				}
+				return prev.map(p =>
+					p.id === productId ? { ...p, quantity: p.quantity - 1 } : p
 				)
 			})
-			createPanel(true, "Rimosso un prodotto dal carrello")
+			createPanel(true, "Rimosso un prodotto dal carrello");
 		} else if (howMany === "allProducts") {
 			setProductsOnCart(prev => {
 				return prev.filter(p => p.id !== productId);
 			})
-			createPanel(true, "Rimosso tutti i prodotti dal carrello")
+			createPanel(true, "Rimosso tutti i prodotti dal carrello");
 		}
 	}
 
-	// [WISHLIST] handle:
+	// =====[WISHLIST]===== handle:
 	const [productsOnWishlist, setProductsOnWishlist] = useState([]);
 	// ADD:
 	const addToWishlist = (product) => {
-		const productPresent = productsOnWishlist.find(p => {
-			return p.id === product.id
-		})
-		if (productPresent) {
-			createPanel(true, "Prodotto gia incluso nella wishlist")
+		if (isProductPresence(productsOnWishlist, product.id)) {
+			createPanel(true, "Prodotto gia incluso nella wishlist");
+			return;
 		} else {
-			setProductsOnWishlist(prev => [...prev, product])
-			createPanel(true, "Prodotto aggiunto alla wishlist")
+			setProductsOnWishlist(prev => [...prev, product]);
+			createPanel(true, "Prodotto aggiunto alla wishlist");
 		}
 	}
 	// REMOVE:
 	const removeFromWishlist = (productId) => {
-		setProductsOnWishlist(prev => prev.filter(p => p.id !== productId))
-		createPanel(true, "Prodotto rimosso dalla wishlist")
+		setProductsOnWishlist(prev => prev.filter(p => p.id !== productId));
+		createPanel(true, "Prodotto rimosso dalla wishlist");
 	}
 
-	// [COMPARISON] handle:
-	// ADD:
+	// =====[COMPARISON]===== handle:
 	const [productsToCompare, setProductsToCompare] = useState([]);
+	// ADD:
 	const addToCompare = async (id) => {
-		const isPresent = productsToCompare.some(p => p.id === id)
-		if (isPresent) {
-			createPanel(true, "Non puoi confrontare due prodotti uguali")
-			return
+		if (isProductPresence(productsToCompare, id)) {
+			createPanel(true, "Non puoi confrontare due prodotti uguali");
+			return;
 		}
 		if (productsToCompare.length === 2) {
-			createPanel(true, "Limite massimo per il confronto: 2 Prodotti")
-			return
+			createPanel(true, "Limite massimo per il confronto: 2 Prodotti");
+			return;
 		} else {
-			const product = await fetchProduct(id)
+			const product = await fetchProduct(id);
 			if (product) {
-				setProductsToCompare(prev => {
-					return [...prev, product]
-				})
-				createPanel(true, "Prodotto aggiunto al confronto")
+				setProductsToCompare(prev => [...prev, product]);
+				createPanel(true, "Prodotto aggiunto al confronto");
 			}
 		}
 	}
 	// REMOVE:
 	const removeFromCompare = (id) => {
-		setProductsToCompare(prev => {
-			return prev.filter(p => {
-				return p.id !== id
-			})
-		})
+		setProductsToCompare(prev => prev.filter(p => p.id !== id));
 	}
-	// when to show comparison panel:
-	const [showComparePanel, setShowComparePanel] = useState(false)
+	// When to show compare panel:
+	const [showComparePanel, setShowComparePanel] = useState(false);
 	useEffect(() => {
 		if (productsToCompare.length > 0) {
-			setShowComparePanel(true)
+			setShowComparePanel(true);
 		}
 	}, [productsToCompare])
 
-	// [NOTIFICATION PANEL] handle:
+	// =====[NOTIFICATION PANEL]===== handle:
 	const [showPanel, setShowPanel] = useState({ show: false, content: "" });
 	function createPanel(state, text) {
-		setShowPanel({ show: state, content: text })
+		setShowPanel({ show: state, content: text });
 		setTimeout(() => {
-			setShowPanel({ show: false, content: text })
+			setShowPanel({ show: false, content: text });
 		}, 3000)
 	}
 
-
 	const values = {
-		fetchProductsCategory,
-		categoryProducts,
-		fetchProduct,
-		product,
-		addToCart,
-		removeFromCart,
-		productsOnCart,
-		addToWishlist,
-		removeFromWishlist,
-		productsOnWishlist,
-		fetchProducts,
-		products,
-		fetchSearchedProducts,
-		searchedProducts,
-		addToCompare,
-		removeFromCompare,
-		productsToCompare,
+		// products
+		fetchProducts, products,
+		fetchProduct, product,
+		fetchProductsCategory, categoryProducts,
+		fetchSearchedProducts, searchedProducts,
+		// cart
+		addToCart, removeFromCart, productsOnCart,
+		// wishlist
+		addToWishlist, removeFromWishlist, productsOnWishlist,
+		// compare
+		addToCompare, removeFromCompare, productsToCompare,
 		showComparePanel,
-		createPanel,
-		showPanel
+		// notifications
+		createPanel, showPanel
 	}
 
 	return (
@@ -157,8 +131,6 @@ const ProductsProvider = ({ children }) => {
 	)
 }
 
-// useContext function:
-const useProductsContext = () => {
-	return useContext(ProductsContext)
-}
+const useProductsContext = () => useContext(ProductsContext);
+
 export { useProductsContext, ProductsProvider }

@@ -1,4 +1,4 @@
-import ProductCard from "../ProductCard"
+import ProductCard from "./cards/ProductCard";
 
 function ProductsList({ productsData, wishListbtnText }) {
 	return (
@@ -7,11 +7,11 @@ function ProductsList({ productsData, wishListbtnText }) {
 				productsData.map((p) => (
 					<ProductCard key={p.id} productData={p} wishListbtnText={wishListbtnText} />
 				))
-				:
-				<div className="not-found-box">
-					<img src="../utility-img/product-not-found.png" alt="" />
-				</div>
-			}
+				: (
+					<div className="not-found-box">
+						<img src="../IMG_utilities/product-not-found.png" alt="" />
+					</div>
+				)}
 		</div>
 	)
 }

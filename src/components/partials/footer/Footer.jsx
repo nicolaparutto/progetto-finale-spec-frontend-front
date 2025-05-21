@@ -1,7 +1,10 @@
-// footer data import:
-import { footerAgency, footerAcquisitions, footerClients, footerPrivacy } from "../../assets/utility-data"
+import {
+	footerAgency,
+	footerAcquisitions,
+	footerClients,
+	footerPrivacy
+} from "../../../data/constants/footerData";
 
-// ____________________________________________________
 function Footer() {
 	return (
 		<>
@@ -9,8 +12,8 @@ function Footer() {
 				<div className="footer-bg">
 					<div className="footer-content container">
 						<div className="footer-logo">
-							<div><img src="../utility-img/footer-logo.png" alt="" /></div>
-							<div><img src="../utility-img/footer-quality.webp" alt="" /></div>
+							<div><img src="/IMG_utilities/footer-logo.png" alt="Logo" /></div>
+							<div><img src="/IMG_utilities/footer-quality.webp" alt="Quality" /></div>
 						</div>
 						<div className="footer-agency">
 							<h4>L'AZIENDA</h4>
@@ -67,8 +70,8 @@ function Footer() {
 						<div className="f-app">
 							<h5>Scarica la nostra app</h5>
 							<div>
-								<img src="../utility-img/app-store.png" alt="" />
-								<img src="../utility-img/google-play.png" alt="" />
+								<img src="/IMG_utilities/app-store.png" alt="" />
+								<img src="/IMG_utilities/google-play.png" alt="" />
 							</div>
 						</div>
 					</div>
@@ -80,14 +83,14 @@ function Footer() {
 					</div>
 					<div>
 						<ul>
-							<li><img src="../utility-img/payments/visa.webp" alt="" /></li>
-							<li><img src="../utility-img/payments/verified-by-visa.webp" alt="" /></li>
-							<li><img src="../utility-img/payments/mastercard.webp" alt="" /></li>
-							<li><img src="../utility-img/payments/american-express.webp" alt="" /></li>
-							<li><img src="../utility-img/payments/paypal.webp" alt="" /></li>
-							<li><img src="../utility-img/payments/maestro.webp" alt="" /></li>
-							<li><img src="../utility-img/payments/klarna.webp" alt="" /></li>
-							<li><img src="../utility-img/payments/findomestic.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/visa.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/verified-by-visa.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/american-express.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/mastercard.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/paypal.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/maestro.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/klarna.webp" alt="" /></li>
+							<li><img src="/IMG_utilities/payments/findomestic.webp" alt="" /></li>
 						</ul>
 					</div>
 				</div>

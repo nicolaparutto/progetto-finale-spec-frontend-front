@@ -1,28 +1,20 @@
 import { useProductsContext } from "../../context/ProductsContext";
+
 function CartProductCard({ productData }) {
 	const { id, title, brand, image, price, quantity, category } = productData;
 	const { addToCart, removeFromCart, addToCompare, addToWishlist } = useProductsContext();
 
-	const addCartHandle = () => {
-		addToCart(
-			{ id, title, category, price, image, brand }
-		)
-	}
+	const prodToadd = { id, title, category, price, image, brand };
+
+	// cart:
+	const addCartHandle = () => addToCart(prodToadd);
 	const removeCartHandle = (id, howMany) => {
-		if (howMany === "oneProduct") {
-			if (quantity === 1) {
-				return
-			}
-			removeFromCart(id, howMany)
-		} else if (howMany === "allProducts") {
-			removeFromCart(id, howMany)
-		}
+		if (howMany === "oneProduct" && quantity === 1) { return }
+		removeFromCart(id, howMany);
 	}
-	const addWishlistHandle = () => {
-		addToWishlist(
-			{ id, title, category, price, image, brand }
-		)
-	}
+	// wishlist:
+	const addWishlistHandle = () => addToWishlist(prodToadd);
+
 	return (
 		<div className="cart-p-card">
 			<div className="cart-p-card-intestation">

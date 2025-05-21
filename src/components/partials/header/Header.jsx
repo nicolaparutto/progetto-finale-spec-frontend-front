@@ -1,34 +1,29 @@
-// react utility:
 import { Link, useNavigate } from "react-router-dom";
-// menu data import:
-import { topMenuData, mainMenuData } from "../../assets/utility-data";
+import { topMenuData, mainMenuData } from "../../../data/constants/headerData";
+import { useProductsContext } from "../../../context/ProductsContext";
+import { useMemo, useRef } from "react";
 // logo per percorso assoluto:
-import logo from "../../../public/utility-img/logo.png";
-import { useProductsContext } from "../../context/ProductsContext";
-import { useMemo, useRef, useState } from "react";
+import logo from "/IMG_utilities/logo.png";
 
-// ____________________________________________________
 function Header() {
 	const { productsOnCart, productsOnWishlist } = useProductsContext();
+	const navigate = useNavigate();
 
 	// products quantity handle:
-	const [productsQuantity, setProductsQuantity] = useState(0)
-	useMemo(() => {
-		const quantity = productsOnCart.reduce((quantity, p) => {
-			return quantity += p.quantity
+	const productsQuantity = useMemo(() => {
+		return productsOnCart.reduce((quantity, p) => {
+			return quantity + p.quantity;
 		}, 0)
-		setProductsQuantity(quantity);
-	}, [productsOnCart])
+	}, [productsOnCart]);
 
-	// searched products handle:
-	const search = useRef(null);
-	const navigate = useNavigate();
+	// research products handle:
+	const queryToSearch = useRef(null);
 	const submitSearch = (e) => {
-		e.preventDefault()
-		const query = search.current.value.trim()
+		e.preventDefault();
+		const query = queryToSearch.current.value.trim();
 		navigate(`/searched-results?query=${encodeURIComponent(query)}`)
-		search.current.value = '';
-		search.current.blur();
+		queryToSearch.current.value = ''; // input reset.
+		queryToSearch.current.blur(); // input de-focus.
 	};
 
 	return (
@@ -37,19 +32,21 @@ function Header() {
 				<div className="top-menu-header">
 					<ul>
 						{topMenuData.map((li, i) => (
-							<li key={i}>{li}</li>
+							<li key={i}><a href="#">{li}</a></li>
 						))}
 					</ul>
 				</div>
 				<div className="main-header">
 					<div className="search-bar">
-						<form action="#" onSubmit={e => submitSearch(e)}>
-							<input type="text" placeholder="Cosa stai cercando?" ref={search} />
-							<button><i className="fa-solid fa-magnifying-glass"></i></button>
+						<form onSubmit={e => submitSearch(e)}>
+							<input type="text" placeholder="Cosa stai cercando?" ref={queryToSearch} />
+							<button type="submit">
+								<i className="fa-solid fa-magnifying-glass"></i>
+							</button>
 						</form>
 					</div>
 					<div className="logo">
-						<Link to={"/"}><img src={logo} alt="logo" /></Link>
+						<Link to={"/"}><img src={logo} alt="Logo" /></Link>
 					</div>
 					<div className="user-section">
 						<div className="user-info">

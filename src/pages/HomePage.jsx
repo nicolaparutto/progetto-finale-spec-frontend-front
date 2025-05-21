@@ -1,36 +1,22 @@
-// react utility:
 import { Link } from "react-router-dom";
+import categoriesData from "../data/constants/categoriesData";
 
-// ____________________________________________________
 function HomePage() {
 	return (
 		<>
-			<div className="homepage-banner">
-				<img src="utility-img/homepage-banner.webp" alt="" />
-			</div>
+			<section className="homepage-banner">
+				<img src="/IMG_utilities/homepage-banner.webp" alt="" />
+			</section>
 			<section className="container section-spacer">
 				<h1>Le nostre proposte</h1>
 				<div className="category-products">
-					<div>
-						<Link to={"/category/PC%20Portatili"}>
-							<img src="../category-img/portatili-category.webp" alt="" />
-						</Link>
-					</div>
-					<div>
-						<Link to={"/category/PC%20Desktop"}>
-							<img src="../category-img/desktop-category.webp" alt="" />
-						</Link>
-					</div>
-					<div>
-						<Link to={"/category/Smartphone%20e%20Cellulari"}>
-							<img src="../category-img/smartphone-category.webp" alt="" />
-						</Link>
-					</div>
-					<div>
-						<Link to={"/category/Televisori"}>
-							<img src="../category-img/tv-category.webp" alt="" />
-						</Link>
-					</div>
+					{categoriesData.map(c => (
+						<div key={c.id}>
+							<Link to={`/category/${encodeURIComponent(c.name)}`}>
+								<img src={c.image} alt={c.name} />
+							</Link>
+						</div>
+					))}
 				</div>
 			</section>
 		</>
