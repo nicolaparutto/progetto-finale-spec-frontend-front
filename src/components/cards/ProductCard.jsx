@@ -1,3 +1,4 @@
+import "../../assets/CSS/CSS-cards/product-card.css"
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../../context/ProductsContext";
@@ -7,7 +8,7 @@ function ProductCard({ productData, wishListbtnText }) {
 	const { id, title, category, price, image, brand } = productData;
 
 	const prodToadd = { id, title, category, price, image, brand };
-	
+
 	// cart:
 	const addCartHandle = () => addToCart(prodToadd);
 	// wishlist:

@@ -2,58 +2,35 @@ import {
 	footerAgency,
 	footerAcquisitions,
 	footerClients,
-	footerPrivacy
+	footerPrivacy,
+	footerPayments
 } from "../../../data/constants/footerData";
-
+import FooterColumn from "./FooterColumn";
 function Footer() {
 	return (
 		<>
 			<section>
 				<div className="footer-bg">
-					<div className="footer-content container">
-						<div className="footer-logo">
-							<div><img src="/IMG_utilities/footer-logo.png" alt="Logo" /></div>
-							<div><img src="/IMG_utilities/footer-quality.webp" alt="Quality" /></div>
+					<div className="main-footer container">
+						<div className="footer-column col-logo">
+							<div>
+								<img src="/IMG_utilities/footer-logo.png" alt="Logo" />
+							</div>
+							<div>
+								<img src="/IMG_utilities/footer-quality.webp" alt="Quality" />
+							</div>
 						</div>
-						<div className="footer-agency">
-							<h4>L'AZIENDA</h4>
-							<ul>
-								{footerAgency.map((li, i) => (
-									<li key={i}><a href="#">{li}</a></li>
-								))}
-							</ul>
-						</div>
-						<div className="footer-aquisitions">
-							<h4>PER I TUOI ACQUISTI</h4>
-							<ul>
-								{footerAcquisitions.map((li, i) => (
-									<li key={i}><a href="#">{li}</a></li>
-								))}
-							</ul>
-						</div>
-						<div className="footer-clients">
-							<h4>AREA CLIENTI</h4>
-							<ul>
-								{footerClients.map((li, i) => (
-									<li key={i}><a href="#">{li}</a></li>
-								))}
-							</ul>
-						</div>
-						<div className="footer-privacy">
-							<h4>PRIVACY</h4>
-							<ul>
-								{footerPrivacy.map((li, i) => (
-									<li key={i}><a href="#">{li}</a></li>
-								))}
-							</ul>
-						</div>
+						<FooterColumn title="L'AZIENDA" className="col-agency" itemList={footerAgency} />
+						<FooterColumn title="PER I TUOI ACQUISTI" itemList={footerAcquisitions} />
+						<FooterColumn title="AREA CLIENTI" itemList={footerClients} />
+						<FooterColumn title="PRIVACY" className="col-privacy" itemList={footerPrivacy} />
 					</div>
 					<div className="footer-socials container">
 						<div className="f-shop-search">
 							<h5>Trova negozio</h5>
-							<form action="#">
-								<input type="text" placeholder="Ricerca per città o indirizzo" />
-								<button>INVIA</button>
+							<form className="radius-100">
+								<input type="text" placeholder="Ricerca per città o indirizzo" className="radius-100" />
+								<button className="radius-100">INVIA</button>
 							</form>
 						</div>
 						<div className="f-socials">
@@ -83,18 +60,13 @@ function Footer() {
 					</div>
 					<div>
 						<ul>
-							<li><img src="/IMG_utilities/payments/visa.webp" alt="" /></li>
-							<li><img src="/IMG_utilities/payments/verified-by-visa.webp" alt="" /></li>
-							<li><img src="/IMG_utilities/payments/american-express.webp" alt="" /></li>
-							<li><img src="/IMG_utilities/payments/mastercard.webp" alt="" /></li>
-							<li><img src="/IMG_utilities/payments/paypal.webp" alt="" /></li>
-							<li><img src="/IMG_utilities/payments/maestro.webp" alt="" /></li>
-							<li><img src="/IMG_utilities/payments/klarna.webp" alt="" /></li>
-							<li><img src="/IMG_utilities/payments/findomestic.webp" alt="" /></li>
+							{footerPayments.map((method, i) => (
+								<li key={i}><img src={method} alt="payment method" /></li>
+							))}
 						</ul>
 					</div>
 				</div>
-			</section >
+			</section>
 		</>
 	)
 }

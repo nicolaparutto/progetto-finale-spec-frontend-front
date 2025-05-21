@@ -39,9 +39,21 @@ const footerPrivacy = [
 	"Mappa marche",
 	"Elenco negozi",
 ]
+const footerPayments = [
+	"/IMG_utilities/payments/visa.webp",
+	"/IMG_utilities/payments/verified-by-visa.webp",
+	"/IMG_utilities/payments/american-express.webp",
+	"/IMG_utilities/payments/mastercard.webp",
+	"/IMG_utilities/payments/paypal.webp",
+	"/IMG_utilities/payments/maestro.webp",
+	"/IMG_utilities/payments/klarna.webp",
+	"/IMG_utilities/payments/findomestic.webp"
+]
+
 export {
 	footerAgency,
 	footerAcquisitions,
 	footerClients,
-	footerPrivacy
+	footerPrivacy,
+	footerPayments
 }
