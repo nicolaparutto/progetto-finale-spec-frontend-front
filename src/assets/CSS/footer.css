@@ -1,9 +1,10 @@
+/* footer utility */
+.footer-bg {
+	background-color: var(--light-main-blu);
+}
+
 /* ========== FOOTER style ========== */
 footer {
-	.footer-bg {
-		background-color: var(--light-main-blu);
-	}
-
 	.main-footer {
 		display: flex;
 		justify-content: space-between;
@@ -148,7 +149,6 @@ footer {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				list-style: none;
 
 				li {
 					width: 60px;

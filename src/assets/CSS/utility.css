@@ -3,10 +3,6 @@
 	border: 1px dashed red;
 }
 
-.debug-c {
-	border: 1px dashed green;
-}
-
 .container {
 	max-width: 1440px;
 	margin: 0 auto;

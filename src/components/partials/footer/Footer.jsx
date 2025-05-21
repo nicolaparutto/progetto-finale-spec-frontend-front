@@ -5,10 +5,11 @@ import {
 	footerPrivacy,
 	footerPayments
 } from "../../../data/constants/footerData";
+
 import FooterColumn from "./FooterColumn";
+
 function Footer() {
 	return (
-		<>
 			<section>
 				<div className="footer-bg">
 					<div className="main-footer container">
@@ -67,7 +68,6 @@ function Footer() {
 					</div>
 				</div>
 			</section>
-		</>
 	)
 }
 

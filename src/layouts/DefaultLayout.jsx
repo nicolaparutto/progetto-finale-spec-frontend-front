@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import "../assets/CSS/header.css";
 import "../assets/CSS/footer.css";
-import "../assets/CSS/utility.css";
 
 // components:
 import Header from "../components/partials/header/Header";

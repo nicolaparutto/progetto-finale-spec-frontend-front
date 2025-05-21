@@ -4,6 +4,7 @@ import { useProductsContext } from "../../../context/ProductsContext";
 import { useMemo, useRef } from "react";
 // logo per percorso assoluto:
 import logo from "/IMG_utilities/logo.png";
+import MainMenuHeader from "./MainMenuHeader";
 
 function Header() {
 	const { productsOnCart, productsOnWishlist } = useProductsContext();
@@ -27,55 +28,46 @@ function Header() {
 	};
 
 	return (
-		<>
-			<div className="container">
-				<div className="top-menu-header">
-					<ul>
-						{topMenuData.map((li, i) => (
-							<li key={i}><a href="#">{li}</a></li>
-						))}
-					</ul>
+		<section className="container">
+			<div className="info-menu-header">
+				<ul>
+					{topMenuData.map((li, i) => (
+						<li key={i}><a href="#">{li}</a></li>
+					))}
+				</ul>
+			</div>
+			<div className="main-header">
+				<div className="search-bar">
+					<form onSubmit={e => submitSearch(e)} className="radius-100">
+						<input type="text" placeholder="Cosa stai cercando?" ref={queryToSearch} className="radius-100" />
+						<button type="submit">
+							<i className="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</form>
 				</div>
-				<div className="main-header">
-					<div className="search-bar">
-						<form onSubmit={e => submitSearch(e)}>
-							<input type="text" placeholder="Cosa stai cercando?" ref={queryToSearch} />
-							<button type="submit">
-								<i className="fa-solid fa-magnifying-glass"></i>
-							</button>
-						</form>
+				<div className="main-logo">
+					<Link to={"/"}><img src={logo} alt="Logo" /></Link>
+				</div>
+				<div className="user-section">
+					<div className="user-info">
+						<i className="fa-solid fa-user"></i>
 					</div>
-					<div className="logo">
-						<Link to={"/"}><img src={logo} alt="Logo" /></Link>
-					</div>
-					<div className="user-section">
-						<div className="user-info">
-							<i className="fa-solid fa-user"></i>
+					<Link to={"/wishlist"}>
+						<div className="user-wishlist">
+							<i className="fa-solid fa-heart"></i>
+							<div className="saved-quantity">{productsOnWishlist.length}</div>
 						</div>
-						<Link to={"/wishlist"}>
-							<div className="user-wishlist">
-								<i className="fa-solid fa-heart"></i>
-								<div className="saved-quantity">{productsOnWishlist.length}</div>
-							</div>
-						</Link>
-						<Link to={"/cart"}>
-							<div className="user-cart">
-								<i className="fa-solid fa-cart-shopping"></i>
-								<div className="saved-quantity">{productsQuantity}</div>
-							</div>
-						</Link>
-					</div>
-				</div>
-
-				<div className="main-menu-header">
-					<ul>
-						{mainMenuData.map((li, i) => (
-							<li key={i}><a href="#">{li}</a></li>
-						))}
-					</ul>
+					</Link>
+					<Link to={"/cart"}>
+						<div className="user-cart">
+							<i className="fa-solid fa-cart-shopping"></i>
+							<div className="saved-quantity">{productsQuantity}</div>
+						</div>
+					</Link>
 				</div>
 			</div>
-		</>
+			<MainMenuHeader itemList={mainMenuData} />
+		</section>
 	)
 }
 

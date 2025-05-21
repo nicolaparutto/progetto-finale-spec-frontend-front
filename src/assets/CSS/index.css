@@ -13,8 +13,11 @@
   --main-blue: #1D428A;
   --light-main-blu: #0369B6;
   --main-yellow: #F1C400;
+  --dark-main-yellow: #d6af00;
   --c-black: #000;
   --c-white: #fff;
+  --c-light-gray: #CCC;
+  --c-dark-gray: #858585;
 }
 
 /* default css */
@@ -96,7 +99,7 @@ ul {
 
 /* ========== MAIN style ========== */
 main {
-  padding-top: 182px;
+  padding-top: 183px;
 
   .homepage-banner {
     img {

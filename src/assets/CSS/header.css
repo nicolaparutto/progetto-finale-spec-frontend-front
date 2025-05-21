@@ -1,33 +1,33 @@
-/* ========== HEADER style ========== */
+/* header utility */
 .lock-top {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 1000;
-	background-color: #fff;
 }
 
 .header-shadow {
 	box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* ========== HEADER style ========== */
 header {
+	background-color: var(--c-white);
 
 	ul {
-		list-style: none;
 		display: flex;
 	}
 
-	.top-menu-header {
-		line-height: 40px;
+	.info-menu-header {
 		font-size: 14px;
-		margin: 0 15px;
+		padding: 0 10px;
 
 		ul {
 			li {
 				margin-right: 40px;
 				cursor: pointer;
+				padding: 10px 5px;
 
 				a {
 					color: var(--main-blue);
@@ -40,21 +40,18 @@ header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin: 0 15px;
-		margin-top: 15px;
+		padding: 15px;
 
 		.search-bar {
 			form {
 				box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 				display: flex;
 				border: 1px solid var(--main-blue);
-				border-radius: 100px;
 				padding: 3px;
 
 				input {
 					width: 300px;
 					border: none;
-					border-radius: 100px;
 					color: var(--main-blue);
 					font-size: 14px;
 					font-weight: 800;
@@ -69,7 +66,7 @@ header {
 
 					&:focus {
 						&::placeholder {
-							color: #858585;
+							color: var(--c-dark-gray);
 						}
 					}
 				}
@@ -81,14 +78,14 @@ header {
 					padding: 6px 7px;
 
 					&:hover {
-						background-color: #d6af00;
+						background-color: var(--dark-main-yellow);
 					}
 				}
 			}
 		}
 
-		.logo {
-			width: 320px;
+		.main-logo {
+			width: 340px;
 		}
 
 		.user-section {
@@ -113,7 +110,7 @@ header {
 				padding: 8px 11px;
 
 				&:hover {
-					border-color: #d9d9d9;
+					border-color: var(--c-light-gray);
 				}
 			}
 
@@ -124,7 +121,7 @@ header {
 				padding: 10px 12px;
 
 				&:hover {
-					background-color: #EDEEEF;
+					background-color: var(--c-light-gray);
 				}
 			}
 
@@ -144,8 +141,8 @@ header {
 		color: var(--main-blue);
 		font-weight: 700;
 		font-size: .9rem;
-		margin-top: 25px;
-		margin-bottom: 20px;
+		padding-top: 16px;
+		padding-bottom: 15px;
 
 		ul {
 			justify-content: space-between;
@@ -155,9 +152,7 @@ header {
 
 				a {
 					position: relative;
-					display: inline-block;
 					color: var(--main-blue);
-					text-decoration: none;
 					padding-bottom: 7px;
 
 					&::after {
