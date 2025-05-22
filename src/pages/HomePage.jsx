@@ -1,3 +1,4 @@
+import "../assets/CSS/CSS-pages/HomePage.css"
 import { Link } from "react-router-dom";
 import categoriesData from "../data/constants/categoriesData";
 

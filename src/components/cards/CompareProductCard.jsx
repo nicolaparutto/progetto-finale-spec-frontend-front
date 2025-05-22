@@ -1,3 +1,4 @@
+import "../../assets/CSS/CSS-cards/CompareProductCard.css";
 import { useProductsContext } from "../../context/ProductsContext";
 
 function CompareProductCard({ productData }) {
@@ -19,7 +20,7 @@ function CompareProductCard({ productData }) {
 	return (
 		<div className="compare-product-card">
 			<div>
-				<button onClick={() => removeFromCompare(id)}>RIMUOVI</button>
+				<button onClick={() => removeFromCompare(id)} className="radius-100">RIMUOVI</button>
 				<img src={image} alt="Prodotto" />
 			</div>
 			<ul>

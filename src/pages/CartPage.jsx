@@ -1,3 +1,4 @@
+import "../assets/CSS/CSS-pages/CartPage.css";
 import { useMemo } from "react";
 import CartProductCard from "../components/cards/CartProductCard";
 import { useProductsContext } from "../context/ProductsContext";
@@ -50,7 +51,7 @@ function CartPage() {
 							<p>Totale</p> <span>€ {totalPrice.toFixed(2)}</span>
 						</div>
 					</div>
-					<button className="cart-btn">PROCEDI ALL'ACQUISTO</button>
+					<button className="cart-btn radius-100">PROCEDI ALL'ACQUISTO</button>
 				</div>
 			</div>
 		</section>

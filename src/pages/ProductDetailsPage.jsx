@@ -1,8 +1,9 @@
+import "../assets/CSS/CSS-pages/ProductDetailsPage.css";
 import { useParams } from "react-router-dom";
 import { useProductsContext } from "../context/ProductsContext";
 import { useEffect } from "react";
-// ____________________________________________________
-function ProductDetailPage() {
+
+function ProductDetailsPage() {
 	const { prodId } = useParams();
 	const { fetchProduct, product, addToCart, addToWishlist, addToCompare } = useProductsContext();
 	const {
@@ -32,7 +33,7 @@ function ProductDetailPage() {
 
 	return (
 		<section className="container section-spacer">
-			<div className="product-details-section">
+			<section className="product-details-section">
 				<div className="details-img">
 					<img src={`/${image}`} alt="product" />
 				</div>
@@ -63,20 +64,20 @@ function ProductDetailPage() {
 						<span>IVA e contributo RAEE inclusi</span>
 					</div>
 					<div className="buy-type">
-						<img src="../utility-img/payments/klarna.webp" alt="" />
+						<img src="../IMG_utilities/payments/klarna.webp" alt="" />
 						<p>Paga in rate a partire da 50 €/mese, 15,90% TAEG. <span>Scopri di più</span></p>
 					</div>
 					<div className="buy-wishlist">
-						<button className="add-wishlist" onClick={addWishlistHandle}>AGGIUNGI ALLA WISHLIST</button>
-						<button className="add-cart" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
+						<button className="add-wishlist radius-100" onClick={addWishlistHandle}>AGGIUNGI ALLA WISHLIST</button>
+						<button className="add-cart radius-100" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
 					</div>
 					<div className="add-service">
 						<p><span>VUOI CONFRONTARLO CON UN ALTRO PRODOTTO?</span></p>
 						<p><span>Scopri qui</span> tutti i servizi disponibili per il tuo acquisto</p>
 					</div>
 				</div>
-			</div>
-			<div className="product-description-section">
+			</section>
+			<section className="product-description-section">
 				<div className="p-description">
 					<h1>Caratteristiche e Descrizione <i className="fa-solid fa-angle-down"></i></h1>
 					<p>{description}</p>
@@ -100,9 +101,9 @@ function ProductDetailPage() {
 						))}
 					</div>
 				</div>
-			</div>
+			</section>
 		</section>
 	)
 }
 
-export default ProductDetailPage
+export default ProductDetailsPage

@@ -1,0 +1,21 @@
+/* _____ SearchedProductsPage style _____ */
+section {
+	.searched-products-list {
+		p {
+			font-size: .9rem;
+			margin-top: 10px;
+			text-align: center;
+			font-weight: 400;
+			color: var(--c-dark-gray);
+
+			span {
+				color: var(--c-black);
+			}
+		}
+
+		.p-list {
+			margin: 0 auto;
+			margin-top: 30px;
+		}
+	}
+}

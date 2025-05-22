@@ -1,3 +1,4 @@
+import "../../assets/CSS/CSS-utilityComponents/ComparePanel.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../../context/ProductsContext";
@@ -17,7 +18,7 @@ function ComparePanel() {
 			<div className="compare-panel-content">
 				<h4>Prodotti da comparare: </h4>
 				<p>{productsToCompare.length}</p>
-				<button onClick={() => setHandleShow(true)}><Link to={"/compare"}>VISUALIZZA</Link></button>
+				<button onClick={() => setHandleShow(true)} className="radius-100"><Link to={"/compare"}>VISUALIZZA</Link></button>
 			</div>
 		</div>
 	)

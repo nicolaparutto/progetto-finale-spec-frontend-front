@@ -1,0 +1,24 @@
+/* _____ HomePage style _____ */
+section.homepage-banner {
+	img {
+		display: block;
+		height: 100%;
+	}
+}
+
+section {
+	.category-products {
+		display: flex;
+		justify-content: space-around;
+		margin-top: 30px;
+
+		div {
+			transition: transform 0.3s ease;
+			cursor: pointer;
+
+			&:hover {
+				transform: scale(1.06);
+			}
+		}
+	}
+}

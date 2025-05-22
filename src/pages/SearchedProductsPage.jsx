@@ -1,7 +1,8 @@
+import "../assets/CSS/CSS-pages/SearchedProductsPage.css"
 import { useLocation } from "react-router-dom";
 import { useProductsContext } from "../context/ProductsContext";
 import { useEffect } from "react";
-import ProductsList from "../components/ProductsList";
+import ProductCard from "../components/cards/ProductCard";
 
 function SearchedProductsPage() {
 	const { fetchSearchedProducts, searchedProducts } = useProductsContext();
@@ -24,7 +25,11 @@ function SearchedProductsPage() {
 				) : (
 					<p>TROVATI: <span>{searchedProducts.length}</span> RISULTATI</p>
 				)}
-				<ProductsList productsData={searchedProducts} wishListbtnText={"AGGIUNGI ALLA WISHLIST"}></ProductsList>
+				<div className="p-list">
+					{searchedProducts.map(p => (
+						<ProductCard key={p.id} productData={p} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
+					))}
+				</div>
 			</div>
 		</section>
 	)

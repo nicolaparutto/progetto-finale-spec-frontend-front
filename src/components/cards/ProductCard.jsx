@@ -1,4 +1,4 @@
-import "../../assets/CSS/CSS-cards/product-card.css"
+import "../../assets/CSS/CSS-cards/ProductCard.css";
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../../context/ProductsContext";
@@ -28,21 +28,20 @@ function ProductCard({ productData, wishListbtnText }) {
 				<button className="compare-btn" onClick={addCompareHandle}>
 					<i className="fa-solid fa-arrow-right-arrow-left"></i>
 				</button>
-				<Link to={`/product-details/${id}`}>
-					<div className="card-img">
+				<div className="card-img">
+					<Link to={`/product-details/${id}`}>
 						<img src={`/${image}`} alt="Prodotto" />
-					</div>
-				</Link>
+					</Link>
+				</div>
 				<div className="card-text">
-
 					<Link to={`/product-details/${id}`}>
 						<span>{category.toUpperCase()}</span>
 						<h5>{title}</h5>
 						<h6>€{price.toFixed(2)}</h6>
 					</Link>
-					<div className="product-hover">
-						<button className="product-btn add-cart-btn" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
-						<button className="product-btn add-wishlist-btn" onClick={() => addWishlistHandle(wishListbtnText)}>{wishListbtnText}</button>
+					<div className="card-hover">
+						<button className="card-btn add-cart-btn radius-100" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
+						<button className="card-btn add-wishlist-btn radius-100" onClick={() => addWishlistHandle(wishListbtnText)}>{wishListbtnText}</button>
 					</div>
 				</div>
 			</div>

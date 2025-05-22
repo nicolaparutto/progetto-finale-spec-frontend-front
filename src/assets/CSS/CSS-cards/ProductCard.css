@@ -1,3 +1,4 @@
+/* ========== ProductCard style ========== */
 .product-card {
 	width: calc(100% / 4);
 
@@ -5,9 +6,25 @@
 		height: 410px;
 		margin: 10px;
 		padding: 25px;
-		border: 1px solid #E6E7E9;
+		border: 1px solid var(--c-light-gray);
 		cursor: pointer;
 		position: relative;
+
+		&:hover {
+			box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
+
+			.card-text {
+				h6 {
+					display: none;
+				}
+
+				.card-hover {
+					display: block;
+					position: absolute;
+					top: 90px;
+				}
+			}
+		}
 
 		.compare-btn {
 			position: absolute;
@@ -16,52 +33,13 @@
 			border: 1px solid var(--main-blue);
 			border-radius: 100%;
 			color: var(--main-blue);
-			background-color: #fff;
+			background-color: var(--c-white);
 			padding: 10px 12px;
 
 			&:hover {
 				background-color: var(--main-blue);
-				color: #fff;
+				color: var(--c-white);
 				border: 1px solid transparent;
-			}
-		}
-
-		.product-hover {
-			display: none;
-
-			.product-btn {
-				border: none;
-				width: 180px;
-				padding: 7px 15px;
-				border-radius: 100px;
-				font-size: .7rem;
-			}
-
-			.add-cart-btn {
-				background-color: var(--main-yellow);
-				margin-bottom: 10px;
-			}
-
-			.add-wishlist-btn {
-				background-color: #fff;
-				border: 1px solid var(--light-main-blu);
-				color: var(--light-main-blu);
-			}
-		}
-
-		&:hover {
-			box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.1);
-
-			.product-hover {
-				display: block;
-				position: absolute;
-				top: 90px;
-			}
-
-			.card-text {
-				h6 {
-					display: none;
-				}
 			}
 		}
 
@@ -98,6 +76,28 @@
 				transform: translateX(-50%);
 				font-size: 1.2rem;
 				font-weight: 300;
+			}
+
+			.card-hover {
+				display: none;
+
+				.card-btn {
+					border: none;
+					width: 180px;
+					padding: 7px 15px;
+					font-size: .7rem;
+				}
+
+				.add-cart-btn {
+					background-color: var(--main-yellow);
+					margin-bottom: 10px;
+				}
+
+				.add-wishlist-btn {
+					background-color: var(--c-white);
+					border: 1px solid var(--light-main-blu);
+					color: var(--light-main-blu);
+				}
 			}
 		}
 	}

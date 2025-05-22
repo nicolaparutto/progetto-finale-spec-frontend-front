@@ -1,3 +1,4 @@
+import "../../assets/CSS/CSS-utilityComponents/NotificationPanel.css";
 import { useProductsContext } from "../../context/ProductsContext";
 
 function NotificationPanel() {

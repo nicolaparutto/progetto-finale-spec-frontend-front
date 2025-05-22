@@ -5,7 +5,7 @@ import { ProductsProvider } from "./context/ProductsContext";
 // pages:
 import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
-import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 import CategoryProductsPage from "./pages/CategoryProductsPage";
 import SearchedProductsPage from "./pages/SearchedProductsPage";
 import CartPage from "./pages/CartPage";
@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route Component={DefaultLayout}>
             <Route path="/" Component={HomePage} />
-            <Route path="/product-details/:prodId" Component={ProductDetailPage} />
+            <Route path="/product-details/:prodId" Component={ProductDetailsPage} />
             <Route path="/category/:categoryName" Component={CategoryProductsPage} />
             <Route path="/searched-results" Component={SearchedProductsPage} />
             <Route path="/cart" Component={CartPage} />

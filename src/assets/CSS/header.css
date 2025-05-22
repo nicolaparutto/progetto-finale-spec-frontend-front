@@ -105,12 +105,12 @@ header {
 			}
 
 			.user-info {
-				border: 4px solid #EDEEEF;
+				border: 4px solid var(--c-light-gray);
 				border-radius: 100%;
 				padding: 8px 11px;
 
 				&:hover {
-					border-color: var(--c-light-gray);
+					border-color: var(--c-gray);
 				}
 			}
 

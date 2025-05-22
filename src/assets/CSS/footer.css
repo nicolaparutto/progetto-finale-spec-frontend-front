@@ -9,7 +9,7 @@ footer {
 		display: flex;
 		justify-content: space-between;
 		padding: 60px 0;
-		border-bottom: 1px solid #5A99CD;
+		border-bottom: 1px solid var(--c-light-gray);
 
 		.footer-column {
 			h4 {

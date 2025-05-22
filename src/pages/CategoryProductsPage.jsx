@@ -1,7 +1,8 @@
+import "../assets/CSS/CSS-pages/CategoryProductsPage.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { useProductsContext } from "../context/ProductsContext";
-import ProductsList from "../components/ProductsList";
+import ProductCard from "../components/cards/ProductCard";
 
 function CategoryProducts() {
 	const { categoryName } = useParams();
@@ -64,19 +65,17 @@ function CategoryProducts() {
 			<section className="container section-spacer">
 				<div className="p-list-intestation">
 					<h1>{categoryName}</h1>
-					<div>
-						<label className="order-by-select">
-							<span>Ordina per:</span>
-							<select onChange={e => setSelectedOrder(e.target.value)}>
-								<option value="rilevanza" >Rilevanza</option>
-								<option value="crescente" >Prezzo crescente</option>
-								<option value="decrescente" >Prezzo decrescente</option>
-								<option value="A-Z" >Nome A-Z</option>
-								<option value="Z-A" >Nome Z-A</option>
-							</select>
-						</label>
+					<div className="order-by-select">
+						<span>Ordina per:</span>
+						<select onChange={e => setSelectedOrder(e.target.value)}>
+							<option value="rilevanza" >Rilevanza</option>
+							<option value="crescente" >Prezzo crescente</option>
+							<option value="decrescente" >Prezzo decrescente</option>
+							<option value="A-Z" >Nome A-Z</option>
+							<option value="Z-A" >Nome Z-A</option>
+						</select>
 					</div>
-					<div className="orders">
+					<div className="products-visualization">
 						<p>{categoryProducts.length} Prodotti</p>
 						<div>
 							<i className="fa-solid fa-border-all"></i>
@@ -85,10 +84,10 @@ function CategoryProducts() {
 					</div>
 				</div>
 				<div className="p-section">
-					<div className="p-filters">
+					<div className="filters-section">
 						<div className="filters-intestation">
 							<h3>Filtri</h3>
-							<button className="remove-filter-btn" onClick={handleRemoveFilters}>Rimuovi filtri</button>
+							<button className="remove-filter-btn" onClick={handleRemoveFilters}><i className="fa-solid fa-xmark"></i></button>
 						</div>
 						<details className="filter">
 							<summary>
@@ -127,9 +126,13 @@ function CategoryProducts() {
 							</form>
 						</details>
 					</div>
-					<ProductsList productsData={filteredProducts} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
-				</div >
-			</section >
+					<div className="p-list">
+						{filteredProducts.map(p => (
+							<ProductCard key={p.id} productData={p} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
+						))}
+					</div>
+				</div>
+			</section>
 		</>
 	)
 }

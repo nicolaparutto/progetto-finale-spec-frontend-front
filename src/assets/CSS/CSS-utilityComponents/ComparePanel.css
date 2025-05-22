@@ -1,0 +1,52 @@
+.compare-panel-modal {
+	position: fixed;
+	top: 50%;
+	right: -300px;
+	transform: translateY(-50%);
+	transition: right 0.3s ease-in-out;
+	display: flex;
+	align-items: center;
+
+	.show-compare-btn {
+		border: none;
+		padding: 0 15px;
+		height: 80px;
+		border-radius: 15px 0px 0px 15px;
+		background-color: var(--c-gray);
+		color: var(--c-white);
+	}
+
+	.compare-panel-content {
+		width: 200px;
+		height: 120px;
+		background-color: var(--main-blue);
+		padding: 15px;
+		color: var(--c-white);
+		border-radius: 10px 0px 0px 10px;
+		text-align: center;
+
+		h4 {
+			font-weight: 300;
+			margin-bottom: 10px;
+		}
+
+		button {
+			margin-top: 10px;
+			border: none;
+			background-color: var(--c-white);
+
+			a {
+				display: block;
+				padding: 8px 11px;
+			}
+		}
+	}
+}
+
+.compareVisible {
+	right: 0px;
+}
+
+.handleCompareVisible {
+	right: -200px;
+}
