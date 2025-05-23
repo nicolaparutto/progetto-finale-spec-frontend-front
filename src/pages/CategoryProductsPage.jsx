@@ -76,7 +76,7 @@ function CategoryProducts() {
 						</select>
 					</div>
 					<div className="products-visualization">
-						<p>{categoryProducts.length} Prodotti</p>
+						<p>{filteredProducts.length} Prodotti</p>
 						<div>
 							<i className="fa-solid fa-border-all"></i>
 							<i className="fa-solid fa-bars"></i>
@@ -127,9 +127,15 @@ function CategoryProducts() {
 						</details>
 					</div>
 					<div className="p-list">
-						{filteredProducts.map(p => (
-							<ProductCard key={p.id} productData={p} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
-						))}
+						{filteredProducts.length > 0 ? (
+							filteredProducts.map(p => (
+								<ProductCard key={p.id} productData={p} wishListbtnText={"AGGIUNGI ALLA WISHLIST"} />
+							))
+						) : (
+							<div className="not-found-box">
+								<img src="/IMG_utilities/product-not-found.png" alt="" />
+							</div>
+						)}
 					</div>
 				</div>
 			</section>
