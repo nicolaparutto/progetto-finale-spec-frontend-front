@@ -22,3 +22,7 @@ section {
 		}
 	}
 }
+
+section.adversiting-section {
+	padding: 50px 0;
+}

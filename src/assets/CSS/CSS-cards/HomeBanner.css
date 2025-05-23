@@ -1,0 +1,42 @@
+section.home-banner {
+	padding: 0 100px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+	margin-bottom: 100px;
+
+	.banner-text {
+		width: 55%;
+		padding: 100px 120px 100px 30px;
+		color: var(--main-blue);
+
+		span {
+			font-size: 1.2rem;
+		}
+
+		p {
+			margin-top: 20px;
+			font-size: 1.2rem;
+		}
+
+		button {
+			margin-top: 40px;
+			border: none;
+			padding: 10px 16px;
+			background-color: var(--main-yellow);
+			font-size: .7rem;
+
+			i {
+				margin-left: 10px;
+			}
+
+			&:hover {
+				background-color: var(--dark-main-yellow);
+			}
+		}
+	}
+
+	.banner-image {
+		width: 45%;
+	}
+}

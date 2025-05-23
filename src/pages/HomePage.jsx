@@ -1,6 +1,8 @@
 import "../assets/CSS/CSS-pages/HomePage.css"
 import { Link } from "react-router-dom";
 import categoriesData from "../data/constants/categoriesData";
+import HomeCards from "../components/cards/HomeCards";
+import HomeBanner from "../components/cards/HomeBanner";
 
 function HomePage() {
 	return (
@@ -20,6 +22,11 @@ function HomePage() {
 					))}
 				</div>
 			</section>
+			<HomeCards />
+			<section className="container section-spacer adversiting-section">
+				<img src="/IMG_utilities/home_banner-2.webp" alt="banner" />
+			</section>
+			<HomeBanner />
 		</>
 	)
 }

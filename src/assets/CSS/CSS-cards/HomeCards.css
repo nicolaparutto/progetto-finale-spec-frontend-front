@@ -1,0 +1,45 @@
+section.three-cards-section {
+	display: flex;
+	justify-content: space-between;
+	padding: 50px 0;
+
+	.three-card {
+		width: 32%;
+		background-color: var(--c-light-gray);
+
+		img {
+			height: 100%;
+		}
+
+		div:last-child {
+			padding: 25px;
+			color: var(--main-blue);
+
+			span {
+				font-weight: 350;
+			}
+
+			h2 {
+				margin-top: 3px;
+				margin-bottom: 20px;
+			}
+
+			button {
+				padding: 8px 14px;
+				border: none;
+				border-radius: 100px;
+				background-color: var(--main-yellow);
+				font-size: .7rem;
+				font-weight: 300;
+
+				i {
+					margin-left: 10px;
+				}
+
+				&:hover {
+					background-color: var(--dark-main-yellow);
+				}
+			}
+		}
+	}
+}
