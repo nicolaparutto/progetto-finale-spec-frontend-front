@@ -56,7 +56,7 @@ function Footer() {
 				</div>
 				<div className="footer-info container">
 					<div>
-						<p>Boolronics Italia SpA. Sede legale Via Roma 12, Milano Partita Iva, Codice Fiscale e iscrizione CCIAA Milano Monza Brianza Lodi n. 12345678. Codice intermediario SDI: ABABABA. Vendite soggette agli Artt. 45 e ss del Codice del Consumo in tema di Diritti dei Consumatori.</p>
+						<p>Boolronics Italia SpA. Sede legale Via Roma 12, Milano Partita Iva, Codice Fiscale e iscrizione CCIAA Milano Lodi n. 12345678. Codice intermediario SDI: ABABABA. Vendite soggette agli Artt. 12 e ss del Codice del Consumo in tema di Diritti dei Consumatori.</p>
 						<h4>© 2025 Boolronics. All rights reserved - Made by Nicola Parutto.</h4>
 					</div>
 					<div>

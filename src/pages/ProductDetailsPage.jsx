@@ -72,7 +72,7 @@ function ProductDetailsPage() {
 						<button className="add-cart radius-100" onClick={addCartHandle}>AGGIUNGI AL CARRELLO</button>
 					</div>
 					<div className="add-service">
-						<p><span>VUOI CONFRONTARLO CON UN ALTRO PRODOTTO?</span></p>
+						<p><span>VUOI AGGIUNGERE UN SERVIZIO?</span></p>
 						<p><span>Scopri qui</span> tutti i servizi disponibili per il tuo acquisto</p>
 					</div>
 				</div>

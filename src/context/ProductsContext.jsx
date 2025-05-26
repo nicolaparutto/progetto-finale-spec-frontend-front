@@ -104,7 +104,7 @@ const ProductsProvider = ({ children }) => {
 		setShowPanel({ show: state, content: text });
 		setTimeout(() => {
 			setShowPanel({ show: false, content: text });
-		}, 3000)
+		}, 2000);
 	}
 
 	const values = {

@@ -1,5 +1,6 @@
 section.compare-products-section {
 	padding: 0 15px;
+	margin-bottom: 60px;
 
 	h1 {
 		text-align: left;
@@ -18,7 +19,7 @@ section.compare-products-section {
 					align-items: center;
 					padding-left: 20px;
 					height: 80px;
-					background-color: var(--c-gray);
+					background-color: var(--c-light-gray);
 					margin: 5px 0;
 					border: 2px solid var(--main-blue);
 					border-radius: 10px;
