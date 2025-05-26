@@ -1,7 +1,8 @@
-import "../assets/CSS/CSS-pages/SearchedProductsPage.css"
+import "../assets/CSS/CSS-pages/SearchedProductsPage.css";
 import { useLocation } from "react-router-dom";
 import { useProductsContext } from "../context/ProductsContext";
 import { useEffect } from "react";
+// components:
 import ProductCard from "../components/cards/ProductCard";
 
 function SearchedProductsPage() {

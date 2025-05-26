@@ -1,7 +1,8 @@
 import "../assets/CSS/CSS-pages/CartPage.css";
 import { useMemo } from "react";
-import CartProductCard from "../components/cards/CartProductCard";
 import { useProductsContext } from "../context/ProductsContext";
+// components:
+import CartProductCard from "../components/cards/CartProductCard";
 
 function CartPage() {
 	const { productsOnCart } = useProductsContext();

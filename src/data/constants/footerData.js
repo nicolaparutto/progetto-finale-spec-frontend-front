@@ -1,4 +1,4 @@
-// Footer:
+// Footer utility data:
 const footerAgency = [
 	"Chi siamo",
 	"Boolronics International",

@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { ProductsProvider } from "./context/ProductsContext";
-
 // pages:
 import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
@@ -11,7 +10,6 @@ import SearchedProductsPage from "./pages/SearchedProductsPage";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
 import ComparePage from "./pages/ComparePage";
-
 // Scroll to top ad ogni cambio pagina:
 function ScrollToTop() {
   const { pathname } = useLocation();

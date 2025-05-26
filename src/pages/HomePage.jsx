@@ -1,6 +1,7 @@
-import "../assets/CSS/CSS-pages/HomePage.css"
+import "../assets/CSS/CSS-pages/HomePage.css";
 import { Link } from "react-router-dom";
 import categoriesData from "../data/constants/categoriesData";
+// components:
 import HomeCards from "../components/cards/HomeCards";
 import HomeBanner from "../components/cards/HomeBanner";
 

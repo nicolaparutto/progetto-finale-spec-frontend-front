@@ -2,6 +2,7 @@ import "../assets/CSS/CSS-pages/CategoryProductsPage.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { useProductsContext } from "../context/ProductsContext";
+// components:
 import ProductCard from "../components/cards/ProductCard";
 
 function CategoryProducts() {

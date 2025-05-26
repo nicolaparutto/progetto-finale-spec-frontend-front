@@ -5,7 +5,7 @@ import {
 	footerPrivacy,
 	footerPayments
 } from "../../../data/constants/footerData";
-
+// components:
 import FooterColumn from "./FooterColumn";
 
 function Footer() {

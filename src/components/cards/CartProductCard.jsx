@@ -1,5 +1,6 @@
 import "../../assets/CSS/CSS-cards/CartProductCard.css";
 import { useProductsContext } from "../../context/ProductsContext";
+
 function CartProductCard({ productData }) {
 	const { id, title, brand, image, price, quantity, category } = productData;
 	const { addToCart, removeFromCart, addToCompare, addToWishlist } = useProductsContext();

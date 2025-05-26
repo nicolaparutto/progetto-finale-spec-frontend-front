@@ -1,4 +1,4 @@
-// Header:
+// Header utility data::
 const topMenuData = [
 	"Negozi",
 	"Volantini",

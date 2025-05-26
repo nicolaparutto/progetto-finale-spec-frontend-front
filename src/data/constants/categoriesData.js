@@ -1,3 +1,4 @@
+// products categories:
 const categories = [
 	{
 		id: 1,

@@ -1,5 +1,4 @@
 function FooterColumn({ className = "", title, itemList }) {
-
 	return (
 		<div className={`footer-column ${className}`} >
 			<h4>{title}</h4>

@@ -1,5 +1,6 @@
 import "../assets/CSS/CSS-pages/WishlistPage.css";
-import { useProductsContext } from "../context/ProductsContext"
+import { useProductsContext } from "../context/ProductsContext";
+// components:
 import ProductCard from "../components/cards/ProductCard";
 
 function WishlistPage() {

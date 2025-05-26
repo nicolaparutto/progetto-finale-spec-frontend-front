@@ -1,6 +1,8 @@
 import "../assets/CSS/CSS-pages/ComparePage.css";
 import { useProductsContext } from "../context/ProductsContext"
+// components:
 import CompareProductCard from "../components/cards/CompareProductCard";
+
 function ComparePage() {
 	const { productsToCompare } = useProductsContext();
 

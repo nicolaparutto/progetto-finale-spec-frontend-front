@@ -4,6 +4,7 @@ import { useProductsContext } from "../../../context/ProductsContext";
 import { useMemo, useRef } from "react";
 // logo per percorso assoluto:
 import logo from "/IMG_utilities/logo.png";
+// components:
 import MainMenuHeader from "./MainMenuHeader";
 
 function Header() {
