@@ -17,7 +17,10 @@ const ProductsProvider = ({ children }) => {
 	}
 
 	// =====[CART]===== handle:
-	const [productsOnCart, setProductsOnCart] = useState([]);
+	const [productsOnCart, setProductsOnCart] = useState(() => {
+		const saved = localStorage.getItem('cart');
+		return saved ? JSON.parse(saved) : [];
+	});
 	// ADD:
 	const addToCart = (product) => {
 		if (isProductPresence(productsOnCart, product.id)) {
@@ -50,7 +53,10 @@ const ProductsProvider = ({ children }) => {
 	}
 
 	// =====[WISHLIST]===== handle:
-	const [productsOnWishlist, setProductsOnWishlist] = useState([]);
+	const [productsOnWishlist, setProductsOnWishlist] = useState(() => {
+		const saved = localStorage.getItem('wishlist');
+		return saved ? JSON.parse(saved) : [];
+	});
 	// ADD:
 	const addToWishlist = (product) => {
 		if (isProductPresence(productsOnWishlist, product.id)) {
@@ -75,8 +81,8 @@ const ProductsProvider = ({ children }) => {
 			createPanel(true, "Non puoi confrontare due prodotti uguali");
 			return;
 		}
-		if (productsToCompare.length === 2) {
-			createPanel(true, "Limite massimo per il confronto: 2 Prodotti");
+		if (productsToCompare.length === 3) {
+			createPanel(true, "Limite massimo per il confronto: 3 Prodotti");
 			return;
 		} else {
 			const product = await fetchProduct(id);
@@ -104,9 +110,16 @@ const ProductsProvider = ({ children }) => {
 		setShowPanel({ show: state, content: text });
 		setTimeout(() => {
 			setShowPanel({ show: false, content: text });
-		}, 2000);
+		}, 3000);
 	}
 
+	const saveproducts = () => {
+		localStorage.setItem('cart', JSON.stringify(productsOnCart));
+		localStorage.setItem('wishlist', JSON.stringify(productsOnWishlist));
+	}
+	useEffect(() => {
+		saveproducts();
+	}, [productsOnCart, productsOnWishlist])
 	const values = {
 		// products
 		fetchProducts, products,
